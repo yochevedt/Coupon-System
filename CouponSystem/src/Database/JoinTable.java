@@ -17,9 +17,11 @@ public class JoinTable {
 		      
 		     //  String query = null;
 		      
-		       stmt.executeUpdate ("CREATE TABLE CUSTOMER_COUPON (CUST_ID INT PRIMARY KEY, COUPON_ID INT)");
-			 
-		      System.out.println("Created JOIN  Table - CUSTOMER_COUPON");     
+		       //stmt.executeUpdate ("CREATE TABLE CUSTOMER_COUPON (CUST_ID INT PRIMARY KEY, COUPON_ID INT)");
+			     stmt.executeUpdate ("CREATE TABLE COMPANY_COUPON (COMP_ID INT PRIMARY KEY, COUPON_ID INT)");
+		      
+		     // System.out.println("Created JOIN  Table - CUSTOMER_COUPON"); 
+			     System.out.println("Created JOIN  Table - COMPANY_COUPON");  
 		      
 		        System.out.println("Done");
 
