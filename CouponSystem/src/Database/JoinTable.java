@@ -1,3 +1,6 @@
+
+////This class is used to create the join tables, with out bringing the data///
+
 package Database;
 import java.sql.*;
 import java.util.jar.JarException;

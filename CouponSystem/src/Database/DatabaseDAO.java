@@ -1,3 +1,6 @@
+
+//this interface is not implemented - not used ///
+
 package Database;
 import Coupon.*;
 import Customer.*;
