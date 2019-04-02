@@ -4,10 +4,6 @@ import Customer.*;
 import Company.*;
 import java.sql.*;
 
-import javax.activation.DataSource;
-
-import com.sun.xml.internal.ws.api.server.InstanceResolver;
-
 
 //this class is the Singletone --Connection Pool ///
 
@@ -52,6 +48,17 @@ public class ConnectionPool {
 		if (counter == Integer.MAX_VALUE)
 			counter = 0;
 		return connections [counter%MAX_CONNECTIONS];
-	}	  
+	}	
+	
+	
+	public static Connection closeConnections(){
+		Connection connection = null;
+		if (connections != null) {
+			try {
+				connection.close();
+			} catch (SQLException e){/*ignored */}
+		}
+		return null;
+	}
 
 }
