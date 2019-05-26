@@ -43,10 +43,10 @@ public class CreateDatabase {
 //	      System.out.println("SQL exception occured" + e.toString() );
 //	    }
 	//////////////////////////////////////////////////////
-		stmt.executeUpdate("CREATE TABLE TESTTABLE (ID INT PRIMARY KEY, TITLE VARCHAR(50), START_DATE DATE, END_DATE DATE, AMOUNT INT, TYPE VARCHAR(50), MESSAGE VARCHAR(50), PRICE DOUBLE, IMAGE VARCHAR(50))");
-		  System.out.println("Created Table - TEST1");     
-	      
-	        System.out.println("Done");
+//		stmt.executeUpdate("CREATE TABLE TESTTABLE (ID INT PRIMARY KEY, TITLE VARCHAR(50), START_DATE DATE, END_DATE DATE, AMOUNT INT, TYPE VARCHAR(50), MESSAGE VARCHAR(50), PRICE DOUBLE, IMAGE VARCHAR(50))");
+//		  System.out.println("Created Table - TEST1");     
+//	      
+//	        System.out.println("Done");
 
   } catch(SQLException e) {
     System.out.println("SQL exception occured" + e.toString() );
