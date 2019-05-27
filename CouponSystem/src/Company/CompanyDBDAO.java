@@ -17,15 +17,21 @@ public class CompanyDBDAO implements CompanyDAO {
 	@Override
 	public void insertCompany(Company company) throws Exception {
 		//String getDBURL = null;
-		con = DriverManager.getConnection(Database.getDBURL());
+		con = DriverManager.getConnection(Database.getDBURL());                    //(?,?,?,?);//
 		String sql = "INSERT INTO Companies (id,companyName,password,email)  VALUES(?,?,?,?)";
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-		    pstmt.setLong(1, company.getId());
-			pstmt.setString(2, company.getCompanyName());
-			pstmt.setString(3, company.getPassoword());
-			pstmt.setString(4, company.getEmail());
+//		    pstmt.setLong(1,company.getId());
+//			pstmt.setString(2,company.getCompanyName());
+//			pstmt.setString(3,company.getPassoword());
+//			pstmt.setString(4,company.getEmail());
 
+			pstmt.setLong (1, company.getId());
+			pstmt.setString(2,company.getCompanyName());
+			pstmt.setString(3,company.getPassoword());
+			pstmt.setString(4,company.getEmail());
+			
+			
 			pstmt.executeUpdate();
 			System.out.println("Company created" + company.toString());
 		} catch (SQLException exception) {
@@ -78,7 +84,7 @@ public class CompanyDBDAO implements CompanyDAO {
 		con = DriverManager.getConnection(Database.getDBURL());
 		Company company = new Company();
 		try (Statement stm = con.createStatement()) {
-			String sql = "SELECT * FROM Companies WHERE ID=" + id;
+			String sql = "SELECT * FROM COMPANIES WHERE ID=" + id;
 			ResultSet rs = stm.executeQuery(sql);
 			rs.next();
 			company.setId(rs.getLong(1));
@@ -93,7 +99,7 @@ public class CompanyDBDAO implements CompanyDAO {
 		}
 		return company;
 	}
-
+	@SuppressWarnings("unused")
 	@Override
 	public synchronized Set<Company> getAllCompanies() throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());

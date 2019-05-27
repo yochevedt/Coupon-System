@@ -36,4 +36,9 @@ public class Database {
 
 	}
 
+	public void insertUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

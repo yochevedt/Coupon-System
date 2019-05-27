@@ -35,7 +35,8 @@ public class CompanyFacade {
 	}
 
 	public Set<Company> getAllCompanies() throws Exception {
-		// CompanyDBDAO comDAO=new CompanyDBDAO();
+		//CompanyDBDAO comDAO=new CompanyDBDAO();
+		//return comDAO.getAllCompanies();
 		return companyDAO.getAllCompanies();
 		
 	}

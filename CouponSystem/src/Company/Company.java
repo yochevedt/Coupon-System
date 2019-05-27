@@ -20,7 +20,7 @@ public class Company {
 		setId(id);
 		setCompanyName(companyName);
 		setPassword(password);
-		setCompanyName(email);
+		setEmail(email);
 
 	}
 
@@ -58,8 +58,11 @@ public class Company {
 
 	
 	@Override
+//	public String toString() {
+//		return "Company [id=" + getId() + ", CompanyName=" + getCompanyName() + ", Password=" + getPassoword() + ", email=" + getEmail()
+//				+ "]";
 	public String toString() {
-		return "Company [id=" + getId() + ", CompanyName=" + getCompanyName() + ", Password=" + getPassoword() + ", email=" + getEmail()
+	return "Company [id=" + getId() + ", CompanyName=" + getCompanyName() + ",  Password=" + getPassoword() + ", email=" + getEmail()
 				+ "]";
 	}
 
