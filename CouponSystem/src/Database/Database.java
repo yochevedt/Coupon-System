@@ -1,12 +1,11 @@
-
 package Database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-//
-//
+////This is the principal class for DB -- the packages and classes are connected to it////////////
+///////////Database.Database--- DONT DELETE/////////////////
 public class Database {
 	//
 	public static String getDBURL() {
@@ -36,9 +35,8 @@ public class Database {
 
 	}
 
-	public void insertUser(User user) {
-		// TODO Auto-generated method stub
+//	public void insertUser(User user) {
+//		// TODO Auto-generated method stub
 		
 	}
 
-}

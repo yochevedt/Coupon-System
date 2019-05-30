@@ -1,5 +1,6 @@
 package Database;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -46,7 +47,7 @@ public class TestUser {
 //		InsertConstantAction app = new InsertConstantAction();
 //		app.insert
 	public void insertUser(Database User) throws Exception {
-		User.insertUser(user);	
+		//User.insertUser(user);	
 	user.insertUser(user);
 	user.insertUser(user2);
 	user.insertUser(user3);

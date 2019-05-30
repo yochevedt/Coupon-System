@@ -1,6 +1,7 @@
 package Database;
 import java.sql.*;
 
+//////////**********this class is to "Create  tables in db"***********
 public class CreateDatabase {
 
 	public static void main(String[] args) {

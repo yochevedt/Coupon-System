@@ -1,6 +1,6 @@
 package Database;
 import java.sql.*;
-
+//***********This class create table companies in DB**************
 public class CreateCompany1 {
 
 	public static void main(String[] args) throws SQLException {
