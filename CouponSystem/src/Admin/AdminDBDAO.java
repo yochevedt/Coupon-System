@@ -7,7 +7,8 @@ import java.util.Scanner;
       
 	   
 	   public void AdminLogin(){
-		   Scanner scanner = new Scanner(System.in);
+		   @SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
 		   boolean user;
 		   boolean admin = false;
 		   user = admin;
@@ -41,10 +42,7 @@ import java.util.Scanner;
 
 		}
 
-//@Override
-//public void AdminLogin() {
-	// TODO Auto-generated method stub
-	
+
 }
 		
 
