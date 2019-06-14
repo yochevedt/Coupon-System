@@ -28,7 +28,7 @@ public class Users {
 		this.password = password;
 	}
 	
-  Users admin = new Users("admin", "1234");
+  //Users admin = new Users("admin", "1234");
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
