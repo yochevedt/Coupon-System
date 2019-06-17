@@ -19,11 +19,11 @@ public class CompanyFacade {
 		companyDAO.insertCompany(company);
 	}
 
-	public void removeComany(Company company) throws Exception {
-		companyDAO.insertCompany(company);
+	public void removeCompany(Company company) throws Exception {
+		companyDAO.removeCompany(company);
 	}
 
-	public void updateComapny(Company company, String newCompName, String newPassword, String newEmail)
+	public void updateCompany(Company company, String newCompName, String newPassword, String newEmail)
 			throws Exception {
 		company.setCompanyName(newCompName);
 		company.setPassword(newPassword);
