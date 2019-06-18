@@ -1,17 +1,22 @@
 package Company;
 
+import java.lang.reflect.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import Database.Database;
 
@@ -163,7 +168,7 @@ public class CompanyDBDAO implements CompanyDAO {
 
 
 	   public void removeCompanyCoupons(Company company) {
-		
+		////////////////////////////////////not finish//////////////
 		//TODO:
 		//first connect to db.
 		//Create a method that will check the list in Company_Coupons table
@@ -173,46 +178,43 @@ public class CompanyDBDAO implements CompanyDAO {
 		//if not exist remove all the coupons that has Company id in the same row.
 		//if exist do nothing.
 		
-		try {
-			con = DriverManager.getConnection(Database.getDBURL());
-		} catch (SQLException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}
-		
-		
-		
-		String pre1 = "DELETE FROM COUPONS WHERE id=? ";
+//		   
+//		   con = DriverManager.getConnection(Database.getDBURL());
+//		Set<Company> allCompanies = new HashSet<>();
+//         allCompanies = companyDAO.getAllCompanies();
+//		 Iterator<Company> iterator = allCompanies.iterator();
+//			
+//			while (iterator.hasNext()) {
+//				Company company3 = new Company();
+//				company3 = iterator.next();
+//				
+//				if  (company3 instanceof Company && company3.getCompanyName().equals(company.getCompanyName()))
+//				  {
+//				// verify if Company   exist (with compare) and if already exist
+//				
+//				JFrame frame = new JFrame("JOptionPane -Checking data");
+//				JOptionPane.showMessageDialog(frame, "the Company" + company.getCompanyName()+ "Already Exist");
+//				return;
+//
+//			}
+//
+//		   }
+//		       companyDAO.insertCompany(company);
+//		       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+//		      JOptionPane.showMessageDialog(frame, "Company " + company.getCompanyName() + " Created");
+//	       }
+//
+//			
+		/////////////////////////not finish////////////////
+		   
+		   
+		   
+		   
 
-		try (PreparedStatement pstm1 = con.prepareStatement(pre1);) {
-			con.setAutoCommit(false);
-			pstm1.setLong(1, company.getId());
-			pstm1.executeUpdate();
-			con.commit();
-		} catch (SQLException e) {
-			try {
-				con.rollback();
-			} catch (SQLException e1) {
-				try {
-					throw new Exception("Database error");
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-			try {
-				throw new Exception("failed to remove company");
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-	}
+
+		   
+		   
+	   }
 
 	public Company getCompanybyPW(String password) {
 		// TODO Auto-generated method stub

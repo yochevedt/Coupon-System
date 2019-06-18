@@ -1,5 +1,9 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import Database.Database;
 import java.time.LocalDate;
-
 import Company.Company;
 import Company.CompanyFacade;
 import Coupon.Coupon;
@@ -11,38 +15,64 @@ public class Test {
 
 	public static void main(String[] args) throws Exception {
 
-		Class.forName("org.apache.derby.jdbc.ClientDriver");
-
-		Company C1 = new Company(1, "RedBend", "red00red00", "redbend@gmail.com");
-		Company C2 = new Company(2, "Apple", "apple00010", "apple@gmail.com");
-		Company C3 = new Company(3, "KiriatSefer", "KW00001222", "kiriat.sefer@gmail.com");
-		Company C4 = new Company(4, "test", "tests11", "ddd@gmail.com");
-	    Company C7 = new Company(7, "BestJava", "jj1sam", "javaaM@gmail.com");
-	    Company C8 = new Company(8, "Harman", "harhar", "harman@gmail.com");
+		Class.forName("org.apache.derby.jdbc.ClientDriver" );
 		
-		
-	//	CompanyFacade companyFacade=(CompanyFacade)client;
-		CompanyFacade companyFacade = new CompanyFacade();
 
-	//companyFacade.insertCompany(C1);
-	//companyFacade.insertCompany(C2);
-	//companyFacade.insertCompany(C3);
-	companyFacade.insertCompany(C8);
-
-		//System.out.println(companyFacade.getAllCompanies());
-
-//		Customer A1 = new Customer(1, "Yocheved Tochner", "YTPassword");
-//		Customer A2 = new Customer(2, "Yaakov Tochner", "YTPassword");
-//		Customer A3 = new Customer(3, "Avrahom Tochner", "YTPassword");
-//		Customer A4 = new Customer(4, "Esther Tochner", "YTPassword");
+//		Company C1 = new Company(1, "RedBend", "red00red00", "redbend@gmail.com");
+//		Company C2 = new Company(2, "Apple", "apple00010", "apple@gmail.com");
+//		Company C3 = new Company(3, "KiriatSefer", "KW00001222", "kiriat.sefer@gmail.com");
+//		Company C4 = new Company(4, "test", "tests11", "ddd@gmail.com");
+//	    Company C7 = new Company(7, "BestJava", "jj1sam", "javaaM@gmail.com");
+//	    Company C8 = new Company(8, "Harman", "harhar", "harman@gmail.com");
 //		
-//		CustomerFacade customerFacade = new CustomerFacade();
 //		
-//		customerFacade.insertCustomer(A1);
-//		customerFacade.insertCustomer(A2);
-//		customerFacade.insertCustomer(A3);
-//		customerFacade.insertCustomer(A4);
-//		
-//		System.out.println(customerFacade.getAllCustomers());
+//	//	CompanyFacade companyFacade=(CompanyFacade)client;
+//		CompanyFacade companyFacade = new CompanyFacade();
+//
+//	//companyFacade.insertCompany(C1);
+//	//companyFacade.insertCompany(C2);
+//	//companyFacade.insertCompany(C3);
+//	companyFacade.insertCompany(C8);
+//
+//		//System.out.println(companyFacade.getAllCompanies());
+//
+////		Customer A1 = new Customer(1, "Yocheved Tochner", "YTPassword");
+////		Customer A2 = new Customer(2, "Yaakov Tochner", "YTPassword");
+////		Customer A3 = new Customer(3, "Avrahom Tochner", "YTPassword");
+////		Customer A4 = new Customer(4, "Esther Tochner", "YTPassword");
+////		
+////		CustomerFacade customerFacade = new CustomerFacade();
+////		
+////		customerFacade.insertCustomer(A1);
+////		customerFacade.insertCustomer(A2);
+////		customerFacade.insertCustomer(A3);
+////		customerFacade.insertCustomer(A4);
+////		
+////		System.out.println(customerFacade.getAllCustomers());
+//	}
 	}
-}
+
+///////////////***This method is to join the tables **********///////////////		
+//		public void linkCompanyCoupon(long companyID, long couponID) throws Exception {
+//
+//			   Connection con = DriverManager.getConnection(Database.getDBURL()); 
+//			   con = DriverManager.getConnection(Database.getDBURL()); 
+//
+//			   String CREATE_COUPON = "INSERT INTO COMPANY_COUPON (COMP_ID, COUPON_ID) VALUES (?,?)";
+//
+//			   try (PreparedStatement pstmt = con.prepareStatement(CREATE_COUPON)) {
+//				   pstmt.setLong(1, companyID);
+//				   pstmt.setLong(2, couponID);
+//				   pstmt.executeUpdate();
+//			 System.out.println("the statement was executed");
+//			
+//			   } catch (SQLException e) {
+//			  throw new Exception("Linking company to the coupon is failed. ", e);
+//			  
+//			  } finally {
+//			      con.close();
+//			    }
+//		// TODO Auto-generated method stub
+
+	}
+
