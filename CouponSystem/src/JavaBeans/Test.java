@@ -13,18 +13,20 @@ public class Test {
 
 			   Connection con = DriverManager.getConnection(Database.getDBURL()); 
 			   con = DriverManager.getConnection(Database.getDBURL()); 
-
+			   System.out.println("connection failed");
 			   String CREATE_COUPON = "INSERT INTO COMPANY_COUPON (COMP_ID, COUPON_ID) VALUES (?,?)";
-
+               System.out.println("test1");
 			   try (PreparedStatement pstmt = con.prepareStatement(CREATE_COUPON)) {
 				   pstmt.setLong(1, companyID);
 				   pstmt.setLong(2, couponID);
 				   pstmt.executeUpdate();
-			 
-			 } catch (SQLException e) {
+			 System.out.println("yes");
+			
+			   } catch (SQLException e) {
 			  throw new Exception("Linking company to the coupon is failed. ", e);
 			  } finally {
 			      con.close();
+			      System.out.print("close connection");
 			    }
 		// TODO Auto-generated method stub
 

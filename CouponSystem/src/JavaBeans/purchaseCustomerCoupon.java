@@ -1,10 +1,7 @@
 package JavaBeans;
 import Customer.*;
 import Database.Database;
-
 import java.sql.*;
-
-import javax.sql.ConnectionPoolDataSource;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -30,7 +27,7 @@ import Coupon.*;
 
 	try {
 
-		// Insert the new coupon to join table COMPANY_COUPON
+		// Insert the new coupon to join table CUSTOMER_COUPON
            stmt = con.createStatement();
            ResultSet resultSet = stmt.executeQuery(sql1);
 
