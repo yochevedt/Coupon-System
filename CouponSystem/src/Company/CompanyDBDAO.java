@@ -7,12 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Database.Database;
 
 public class CompanyDBDAO implements CompanyDAO {
 	Connection con;
+	private  CompanyDBDAO companyDAO = new CompanyDBDAO();
 
 	@Override
 	public void insertCompany(Company company) throws Exception {
@@ -123,4 +128,101 @@ public class CompanyDBDAO implements CompanyDAO {
 
 		return set;
 	}
+
+	public void createCompany(Company company) throws Exception {
+		//TODO
+		//connect to db.
+		//check if company exist - bring AllCompanies
+		//make a loop while and if the company exist exit, if not exist insert method.
+		//add System prints to exit and System prints to added company
+		con = DriverManager.getConnection(Database.getDBURL());
+		Set<Company> allCompanies = new HashSet<>();
+		allCompanies = companyDAO.getAllCompanies();
+		
+		Iterator<Company> iterator = allCompanies.iterator();
+		
+		while (iterator.hasNext()) {
+			Company company2 = new Company();
+			company2 = iterator.next();
+			
+			if  (company2 instanceof Company && company2.getCompanyName().equals(company.getCompanyName()))
+			  {
+			// verify if Company   exist (with compare) and if already exist
+			
+			JFrame frame = new JFrame("JOptionPane -Checking data");
+			JOptionPane.showMessageDialog(frame, "the Company" + company.getCompanyName()+ "Already Exist");
+			return;
+
+		}
+
+	   }
+	       companyDAO.insertCompany(company);
+	       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+	      JOptionPane.showMessageDialog(frame, "Company " + company.getCompanyName() + " Created");
+       }
+
+
+	   public void removeCompanyCoupons(Company company) {
+		
+		//TODO:
+		//first connect to db.
+		//Create a method that will check the list in Company_Coupons table
+		//the join table will be  displayed  as a list
+		//bring the list of the Compnay_Coupons table and 
+		//need to create a while loop, that checks if Company  id  exist or not in Company table
+		//if not exist remove all the coupons that has Company id in the same row.
+		//if exist do nothing.
+		
+		try {
+			con = DriverManager.getConnection(Database.getDBURL());
+		} catch (SQLException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		
+		
+		String pre1 = "DELETE FROM COUPONS WHERE id=? ";
+
+		try (PreparedStatement pstm1 = con.prepareStatement(pre1);) {
+			con.setAutoCommit(false);
+			pstm1.setLong(1, company.getId());
+			pstm1.executeUpdate();
+			con.commit();
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				try {
+					throw new Exception("Database error");
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			try {
+				throw new Exception("failed to remove company");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	public Company getCompanybyPW(String password) {
+		// TODO Auto-generated method stub
+		//this method will get all the companies and check if the password exist or not
+		//make a while loop, where if password belongs  to Company - company name, return an object company
+		//if password is incorrect exit give error message.
+		
+		
+		return null;
+	}
+
+	
 }

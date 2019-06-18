@@ -7,12 +7,19 @@ package Customer;
 	import java.sql.SQLException;
 	import java.sql.Statement;
 	import java.util.HashSet;
-	import java.util.Set;
-	import Database.Database;
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import Company.Company;
+import Database.Database;
 
 
 	public class CustomerDBDAO implements CustomerDAO {
 		Connection con;
+		private CustomerDBDAO custDAO = new CustomerDBDAO();
 
 		@Override
 		public void insertCustomer(Customer customer) throws Exception {
@@ -116,6 +123,55 @@ package Customer;
 
 			return set;
 		}
+
+		public void createCustomer(Customer customer) throws Exception {
+			// TODO:
+			//Auto-generated method stub
+			//check if customer exist - bring AllCustomers
+			//make a loop while and if the customer  exist exit, if not exist insert method.
+			//add insert customer method.
+			//add System prints to exit and System prints to added company
+			con = DriverManager.getConnection(Database.getDBURL());
+			Set<Customer> allCustomers = new HashSet<>();
+			allCustomers = custDAO.getAllCustomers();
+			
+			Iterator<Customer> iterator = allCustomers.iterator();
+			
+			while (iterator.hasNext()) {
+				
+				Customer customer2 = new Customer();
+				customer2 = iterator.next();
+					if  (customer2 instanceof Customer && customer.getCustomerName().equals(customer.getCustomerName()))
+						{
+			      	// verify if Company   exist (with compare) and if already exist
+				
+				JFrame frame = new JFrame("JOptionPane -Checking data");
+				JOptionPane.showMessageDialog(frame, "the Customer" + customer.getCustomerName()+ "Customer already exit");
+				return;
+
+			}
+
+		       custDAO.insertCustomer(customer);
+		       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
+		      JOptionPane.showMessageDialog(frame, "Customer " + customer.getCustomerName() + "has been Created");
+	       }
+		}
+		
+		public void removeCustomerCoupons(Customer customer) {
+			
+			//TODO:
+			//Create a method that will check the list in Customer_Coupon table
+			//the join table will be  displayed  as a list
+			//bring the list of the Customer_Coupons table and 
+			//need to create a while loop, that checks if Customer id  exist or not in Costumer table
+			//if not exist remove all the coupons that has Customer id in the same row.
+			//if exist do nothing.
+			
+		}
+
+		
+
+		
 	}
 
 
