@@ -32,27 +32,42 @@ public class AdminTest {
 		   
 		      if (facade instanceof AdminFacade) {
                     System.out.println("========  Login(admin, 1234, AdminFacade) ========\n");
-                
-      // Create new 2 companies.
+        
+      /******************************************************************/              
+      /** Create new 2 companies*/
                   //Template//
                   // Company C3 = new Company(033, "RedBend4", "red00red00", "harman@gmail.com");
-                  Company C2 = new Company(014, "HTest2", "harhar", "harman@gmail.com");
+                //  Company C2 = new Company(014, "HTest2", "harhar", "harman@gmail.com");
                    
                  //   ((AdminFacade) facade).CreateCompany(C3);
-		         ((AdminFacade) facade).CreateCompany(C2);
-		          
-     // Show all companies (After creating new companies - before update).
-					companies = ((AdminFacade) facade).getAllCompanies();
-					System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
-		            
-				   // ((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
-					// Company C3 = new Company(033, "RedBend4", "red00red00", "harman@gmail.com");
+		       //  ((AdminFacade) facade).CreateCompany(C2);
 	
+   /****Show All companies method (working) *******************/
+                    
+     // Show all companies (After creating new companies - before update).
+	companies = ((AdminFacade) facade).getAllCompanies();
+	System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
 		            
+	/********************************************************************/			
+		/**Update Company Test -- (not working yet)**/
+	//((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
 		
+	/********************************************************************/
+	
+	// Show One updated company id=5
+	/**Display company details according to id (method is working)**/
+	Company company1 = ((AdminFacade) facade).getCompany(63);
+	System.out.println("Display company details - according to company id : " + company1.toString());
+		      
+	/********************************************************************/
+	
+	
+	
+	
+	   }	
 	
 }
-}}
+}
 	
 		
 		

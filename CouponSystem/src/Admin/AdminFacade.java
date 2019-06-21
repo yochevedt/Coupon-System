@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import org.apache.derby.client.am.ClientTypes;
 import org.apache.derby.iapi.error.PublicAPI;
 import com.sun.beans.WeakCache;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 import Company.*;
 import Customer.*;
@@ -75,12 +76,11 @@ public class AdminFacade  {
 
     
      /**Remove Company Method**/
-   
-    // public void removeCompany(Company company) throws Exception {
+   public void removeCompany(Company company) throws Exception {
     	//this method will update the JoinTable Company_Coupon and remove the company coupons at first.
-    	//companyDAO.removeCompanyCoupons(company);
-    	// remove the company
-    	//companyDAO.removeCompany(company);
+         companyDAO.removeCompany(company);
+   }
+    	
   //  }
     
 	/**Update Company method**/
@@ -110,7 +110,13 @@ public class AdminFacade  {
 	}
 	}  */
      
-     
+     /**Get company method in AdminFacade
+     * @throws Exception **/
+     public Company getCompany(long id) throws Exception {
+ 		// TODO Auto-generated method stub
+    	 return companyDAO.getCompany(id);
+ 		
+ 	}
      
          public Company getCompanybyPW (Company company) throws Exception {
  
@@ -171,6 +177,9 @@ public class AdminFacade  {
 
  		return custDAO.getAllCustomers();
  	}
+
+
+	
 
 
 	
