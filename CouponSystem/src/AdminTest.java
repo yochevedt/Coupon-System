@@ -1,5 +1,7 @@
 
 import Database.User;
+
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -45,23 +47,53 @@ public class AdminTest {
    /****Show All companies method (working) *******************/
                     
      // Show all companies (After creating new companies - before update).
-	companies = ((AdminFacade) facade).getAllCompanies();
-	System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
+	//*companies = ((AdminFacade) facade).getAllCompanies();
+	//*System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
 		            
 	/********************************************************************/			
 		/**Update Company Test -- (not working yet)**/
 	//((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
 		
 	/********************************************************************/
-	
+	 
 	// Show One updated company id=5
 	/**Display company details according to id (method is working)**/
-	Company company1 = ((AdminFacade) facade).getCompany(63);
-	System.out.println("Display company details - according to company id : " + company1.toString());
+	
+	//Company company1 = ((AdminFacade) facade).getCompany(63);
+	//System.out.println("Display company details - according to company id : " + company1.toString());
 		      
 	/********************************************************************/
 	
+	/********Remove Company method*  (not working yet this method ) ********************/
+	//Company company1 = ((AdminFacade) facade).getCompany(63);
+	//Company company = ((AdminFacade) facade).removeCompany(company);
 	
+	/**********************************************************************************/
+	//
+	//
+	/**********************************************************************************/
+	               /**Coupons Tests for Admin **/
+	
+	/***Show coupons method *****/
+	coupons = ((AdminFacade) facade).getAllCoupons();
+	System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
+	
+	/*******************************************************************************/
+	
+	/****Create new Coupons ***//////This Method is Working !!/////////////**//
+	
+	Coupon K01= new Coupon(700, "Super1", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+	Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+	Coupon K03= new Coupon(702, "Super3", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+
+	java.sql.Date.valueOf(LocalDate.now());
+	java.sql.Date.valueOf(LocalDate.now().plusDays(10));
+	System.out.println("connection");
+	
+	((AdminFacade) facade).insertCoupon(K01);
+	((AdminFacade) facade).insertCoupon(K02);
+	((AdminFacade) facade).insertCoupon(K03);
+	System.out.println("New Coupons were added to the System " + K01 + K02 + K03 );
 	
 	
 	   }	

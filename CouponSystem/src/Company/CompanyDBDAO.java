@@ -138,6 +138,8 @@ public  class CompanyDBDAO implements CompanyDAO {
 			company.setEmail(rs.getString(4));
 
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause()+" "+e.getStackTrace());
 			throw new Exception("Unable to get data");
 		} finally {
 			con.close();
@@ -237,6 +239,16 @@ public  class CompanyDBDAO implements CompanyDAO {
 		
 		
 		return null;
+	}
+
+	public void removeCompany(long id) {
+		// TODO Auto-generated method stub
+		try {
+			companyDAO.removeCompany(getCompany(0));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	
