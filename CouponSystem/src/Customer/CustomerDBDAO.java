@@ -19,7 +19,7 @@ import Database.Database;
 
 	public class CustomerDBDAO implements CustomerDAO {
 		Connection con;
-		private CustomerDBDAO custDAO = new CustomerDBDAO();
+		
 
 		@Override
 		public void insertCustomer(Customer customer) throws Exception {

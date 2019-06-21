@@ -1,40 +1,29 @@
 package Company;
 
-import java.lang.reflect.Array;
+
+import java.lang.reflect.Executable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 import Database.Database;
 
-public class CompanyDBDAO implements CompanyDAO {
+public  class CompanyDBDAO implements CompanyDAO {
 	Connection con;
-	private  CompanyDBDAO companyDAO = new CompanyDBDAO();
-
-	@Override
-	public void insertCompany(Company company) throws Exception {
-		//String getDBURL = null;
+	
+	
+		public void CreateCompany(Company company) throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());                    //(?,?,?,?);//
 		String sql = "INSERT INTO Companies (id,companyName,password,email)  VALUES(?,?,?,?)";
+		
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
-
-//		    pstmt.setLong(1,company.getId());
-//			pstmt.setString(2,company.getCompanyName());
-//			pstmt.setString(3,company.getPassoword());
-//			pstmt.setString(4,company.getEmail());
 
 			pstmt.setLong (1, company.getId());
 			pstmt.setString(2,company.getCompanyName());
@@ -75,20 +64,66 @@ public class CompanyDBDAO implements CompanyDAO {
 
 	}
 
+	/**Update company method**/
+	
 	@Override
 	public void updateCompany(Company company) throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());
-		try (Statement stm = con.createStatement()) {
-			String sql = "UPDATE Companies " + " SET companyName='" + company.getCompanyName() + "', password "
-					+ company.getPassoword() + "', email " + company.getEmail() + "' WHERE ID=" + company.getId();
+//		try (Statement stm = con.createStatement()) {
+//			String sql = "UPDATE Companies " + " SET companyName='" + company.getCompanyName() + "', password "
+//					+ company.getPassoword() + "', email " + company.getEmail() + "' WHERE ID=" + company.getId();
 
-			// Statement stm = null;
-			stm.executeUpdate(sql);
+		//try (Statement stm = con.createStatement()) {
+		
+		System.out.printf("Starting to add update data" );	
+		
+		try {
+			String sql = "update Companies set COMPANYNAME= ?,PASSWORD = ?, EMAIL= ? where ID = ?";
+			PreparedStatement stm1 = con.prepareStatement(sql);
+			stm1.setString(1, company.getCompanyName());
+			
+			//stm1.setString(1, company.getCompanyName());
+			stm1.setString(2, company.getPassoword());
+			stm1.setString(3, company.getEmail());
+			stm1.setLong(4, company.getId());
+			stm1.executeUpdate();
 		} catch (SQLException e) {
-			throw new Exception(" update Comapny failed");
+			throw new Exception("update company failed " + e.getMessage());
+		} finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				throw new Exception("connection close failed " + e.getMessage());
+			}
 		}
+		
+		
+		
+		
+		
+		
+//		try (Statement stmt = con.createStatement()) {
+//			String sql =
+//		"UPDATE Companies " 
+//		+ "SET companyName =  '?,  company.getCompanyName()'" 
+//		+ "password =  '?,   company.getPassoword()'"
+//		+ "email =  '?,  company.getEmail()'"
+//		+ "WHERE ID =  '? company.getId()'";
+//			
+//			//stmt = null;
+//			stmt.executeQuery(sql);
+//		      PreparedStatement stmt1 = (PreparedStatement) stmt;
+//		    	stmt1 = con.prepareStatement(sql);
+//		    	//((PreparedStatement) stmt).setLong (1,company.getId());
+//		    	((PreparedStatement) stmt1).setLong (1,company.getId());
+//		        ((PreparedStatement) stmt1).setString(2,company.getCompanyName());
+//				((PreparedStatement) stmt1).setString(3,company.getPassoword());
+//				((PreparedStatement) stmt1).setString(4,company.getEmail());
+//	
 	}
 
+	
+	
 	@Override
 	public Company getCompany(long id) throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());
@@ -112,7 +147,8 @@ public class CompanyDBDAO implements CompanyDAO {
 	@SuppressWarnings("unused")
 	@Override
 	public synchronized Set<Company> getAllCompanies() throws Exception {
-		con = DriverManager.getConnection(Database.getDBURL());
+	//	con = DriverManager.getConnection(Database.getDBURL());
+		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
 		Set<Company> set = new HashSet<>();
 		String sql = "SELECT id FROM Companies";
 		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
@@ -134,39 +170,17 @@ public class CompanyDBDAO implements CompanyDAO {
 		return set;
 	}
 
-	public void createCompany(Company company) throws Exception {
+       public void createCompany(Company company) throws Exception {
 		//TODO
 		//connect to db.
-		//check if company exist - bring AllCompanies
-		//make a loop while and if the company exist exit, if not exist insert method.
-		//add System prints to exit and System prints to added company
-		con = DriverManager.getConnection(Database.getDBURL());
-		Set<Company> allCompanies = new HashSet<>();
-		allCompanies = companyDAO.getAllCompanies();
+		//Create an object that will call the method to "insert company"
 		
-		Iterator<Company> iterator = allCompanies.iterator();
+		con = DriverManager.getConnection(Database.getDBURL());  
 		
-		while (iterator.hasNext()) {
-			Company company2 = new Company();
-			company2 = iterator.next();
-			
-			if  (company2 instanceof Company && company2.getCompanyName().equals(company.getCompanyName()))
-			  {
-			// verify if Company   exist (with compare) and if already exist
-			
-			JFrame frame = new JFrame("JOptionPane -Checking data");
-			JOptionPane.showMessageDialog(frame, "the Company" + company.getCompanyName()+ "Already Exist");
-			return;
-
-		}
-
-	   }
-	       companyDAO.insertCompany(company);
-	       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-	      JOptionPane.showMessageDialog(frame, "Company " + company.getCompanyName() + " Created");
-       }
-
-
+		companyDAO.CreateCompany(company);
+		System.out.println("AdminUser: Company created successfully");
+		    
+}
 	   public void removeCompanyCoupons(Company company) {
 		////////////////////////////////////not finish//////////////
 		//TODO:
@@ -200,8 +214,7 @@ public class CompanyDBDAO implements CompanyDAO {
 //
 //		   }
 //		       companyDAO.insertCompany(company);
-//		       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-//		      JOptionPane.showMessageDialog(frame, "Company " + company.getCompanyName() + " Created");
+//		       
 //	       }
 //
 //			

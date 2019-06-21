@@ -3,9 +3,11 @@ package Customer;
 import java.util.Set;
 
 
+
 public interface CustomerDAO {
 	
-
+	CustomerDBDAO custDAO = new CustomerDBDAO();
+	
 	void insertCustomer(Customer customer) throws Exception;
 
 	void removeCustomer(Customer customer) throws Exception;

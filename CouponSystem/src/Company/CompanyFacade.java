@@ -16,7 +16,7 @@ public class CompanyFacade {
 	}
 
 	public void insertCompany(Company company) throws Exception {
-		companyDAO.insertCompany(company);
+		companyDAO.createCompany(company);
 	}
 
 	public void removeCompany(Company company) throws Exception {

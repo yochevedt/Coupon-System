@@ -36,6 +36,7 @@ public class AdminFacade  {
     public AdminFacade (){
     	
     }
+  
     
     /**Methods**/
     
@@ -54,49 +55,49 @@ public class AdminFacade  {
 	}
     
      /**Login Method**/
-     public boolean Login (String name, String password, ClientTypes cType) throws Exception{
-    	
+    // public boolean Login (String name, String password, ClientTypes cType) throws Exception{
+    	 public boolean Login (String name, String password) throws Exception{	
     	if (name.equals(this.name) && password.equals(this.password))  {
+    		System.out.println("Welcome to the Coupon System");
     		return true;
     	}
+    	System.out.println("Your login failed please try again");
     	return false;
+ 
       }
     
      /**CreateComany method**/
      public void CreateCompany(Company company) throws Exception {
-	  Set<Company> allCompanies = new HashSet<Company>();
-		allCompanies = companyDAO.getAllCompanies();
-			
-	  Iterator<Company> iterator = allCompanies.iterator();
 	  
-	  while (iterator.hasNext()) {
-		  Company company2 = new Company();
-		  company2 = iterator.next();
-		  if  (company2 instanceof Company && company2.getCompanyName().equals(company.getCompanyName()))
-				  {
-				// verify if Company   exist (with compare) and if already exist
-				
-				JFrame frame = new JFrame("JOptionPane -Checking data");
-				JOptionPane.showMessageDialog(frame, "the Company" + company.getCompanyName()+ "Already Exist");
-				return;
-
-			}
-
-		}
-		companyDAO.createCompany(company);
-		JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-		JOptionPane.showMessageDialog(frame, "Company " + company.getCompanyName() + " Created");
+       companyDAO.CreateCompany(company);
+    	     	 
 	}
 
-    /**Remove Company Method**/
-    public void removeCompany(Company company) throws Exception {
-    	//this method will update the JoinTable Company_Coupon and remove the company coupons at first.
-    	companyDAO.removeCompanyCoupons(company);
-    	// remove the company
-    	companyDAO.removeCompany(company);
-    }
     
-	public void updateCompany(Company company) throws Exception {
+     /**Remove Company Method**/
+   
+    // public void removeCompany(Company company) throws Exception {
+    	//this method will update the JoinTable Company_Coupon and remove the company coupons at first.
+    	//companyDAO.removeCompanyCoupons(company);
+    	// remove the company
+    	//companyDAO.removeCompany(company);
+  //  }
+    
+	/**Update Company method**/
+     
+//     public void updateCompany(Company company) throws Exception{
+//    	 
+//    	 companyDAO.updateCompany(company);
+//     }
+     
+     public void updateCompany(int id, String companyName, String password, String email) throws Exception {
+ 		Company company = null;
+		// TODO Auto-generated method stub
+ 		companyDAO.updateCompany(company);
+ 	}
+
+     
+    /* public void updateCompany(Company company) throws Exception {
 		Connection con = DriverManager.getConnection(Database.getDBURL());
 		try (Statement stm = con.createStatement()) {
 			String sql = "UPDATE Companies " + " SET companyName='" + company.getCompanyName() + "', password "
@@ -107,20 +108,26 @@ public class AdminFacade  {
 			throw new Exception(" update Comapny failed");
 		
 	}
-	}
-      public Company getCompanybyPW (Company company) throws Exception {
-
-	   return companyDAO.getCompanybyPW(password);
+	}  */
+     
+     
+     
+         public Company getCompanybyPW (Company company) throws Exception {
+ 
+	       return companyDAO.getCompanybyPW(password);
 
 	}
 	
-	public Set<Company> getAllCompanies() throws Exception {
+	  
+     
+     public Set<Company> getAllCompanies() throws Exception {
 		// CompanyDBDAO comDAO=new CompanyDBDAO();
 		return companyDAO.getAllCompanies();
 	}
 
+     /************Customer Methods to be applied by Admin****************/
 	
-     public void CreateCustomer(Customer customer) throws Exception {
+        public void CreateCustomer(Customer customer) throws Exception {
             Set<Customer> allCustomers = new HashSet<Customer>();
 			allCustomers = custDAO.getAllCustomers();
 			Iterator<Customer> itrIterator = allCustomers.iterator();
@@ -136,12 +143,10 @@ public class AdminFacade  {
 		}
 	
 			custDAO.createCustomer(customer);
-			
-		JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-		JOptionPane.showMessageDialog(frame, "Customer " + customer.getCustomerName() + "Created");
 		
 	     }
 
+        
      public void removeCustomer(Customer customer) throws Exception {
 
  		// Update Customer coupons in CUSTOMER_COUPON Table
@@ -152,21 +157,23 @@ public class AdminFacade  {
  	}
 
  	public void updateCustomer(Customer customer) throws Exception {
-
+ 		
  		custDAO.updateCustomer(customer);
- 	}
+ 	   }
 
+ 	
  	public Customer getCustomer(long id) throws Exception {
 
  		return custDAO.getCustomer(id);
-
- 	}
+ 		}
 
  	public Set<Customer> getAllCustomers() throws Exception {
 
  		return custDAO.getAllCustomers();
  	}
 
+
+	
  }
      
      

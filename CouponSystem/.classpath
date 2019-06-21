@@ -5,5 +5,6 @@
 	<classpathentry kind="lib" path="C:/JavaExercise/db-derby-10.14.2.0-bin/db-derby-10.14.2.0-bin/lib/derby.jar"/>
 	<classpathentry kind="lib" path="C:/JavaExercise/db-derby-10.14.2.0-bin/db-derby-10.14.2.0-bin/lib/derbyclient.jar"/>
 	<classpathentry kind="lib" path="C:/JavaExercise/db-derby-10.14.2.0-bin/db-derby-10.14.2.0-bin/lib/rt.jar"/>
+	<classpathentry kind="lib" path="derbyclient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

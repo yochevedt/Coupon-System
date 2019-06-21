@@ -64,6 +64,6 @@ public class Company {
 	public String toString() {
 	return "Company [id=" + getId() + ", CompanyName=" + getCompanyName() + ",  Password=" + getPassoword() + ", email=" + getEmail()
 				+ "]";
-	}
+	}}
 
-}
+

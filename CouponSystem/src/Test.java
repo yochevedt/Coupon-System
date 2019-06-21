@@ -23,18 +23,18 @@ public class Test {
 //		Company C3 = new Company(3, "KiriatSefer", "KW00001222", "kiriat.sefer@gmail.com");
 //		Company C4 = new Company(4, "test", "tests11", "ddd@gmail.com");
 //	    Company C7 = new Company(7, "BestJava", "jj1sam", "javaaM@gmail.com");
-//	    Company C8 = new Company(8, "Harman", "harhar", "harman@gmail.com");
+        Company C9 = new Company(10, "Harman", "harhar", "harman@gmail.com");
 //		
 //		
 //	//	CompanyFacade companyFacade=(CompanyFacade)client;
-//		CompanyFacade companyFacade = new CompanyFacade();
+    	CompanyFacade companyFacade = new CompanyFacade();
 //
 //	//companyFacade.insertCompany(C1);
 //	//companyFacade.insertCompany(C2);
 //	//companyFacade.insertCompany(C3);
-//	companyFacade.insertCompany(C8);
+       companyFacade.insertCompany(C9);
 //
-//		//System.out.println(companyFacade.getAllCompanies());
+       System.out.println(companyFacade.getAllCompanies());
 //
 ////		Customer A1 = new Customer(1, "Yocheved Tochner", "YTPassword");
 ////		Customer A2 = new Customer(2, "Yaakov Tochner", "YTPassword");
@@ -51,28 +51,6 @@ public class Test {
 ////		System.out.println(customerFacade.getAllCustomers());
 //	}
 	}
-
-///////////////***This method is to join the tables **********///////////////		
-//		public void linkCompanyCoupon(long companyID, long couponID) throws Exception {
-//
-//			   Connection con = DriverManager.getConnection(Database.getDBURL()); 
-//			   con = DriverManager.getConnection(Database.getDBURL()); 
-//
-//			   String CREATE_COUPON = "INSERT INTO COMPANY_COUPON (COMP_ID, COUPON_ID) VALUES (?,?)";
-//
-//			   try (PreparedStatement pstmt = con.prepareStatement(CREATE_COUPON)) {
-//				   pstmt.setLong(1, companyID);
-//				   pstmt.setLong(2, couponID);
-//				   pstmt.executeUpdate();
-//			 System.out.println("the statement was executed");
-//			
-//			   } catch (SQLException e) {
-//			  throw new Exception("Linking company to the coupon is failed. ", e);
-//			  
-//			  } finally {
-//			      con.close();
-//			    }
-//		// TODO Auto-generated method stub
 
 	}
 

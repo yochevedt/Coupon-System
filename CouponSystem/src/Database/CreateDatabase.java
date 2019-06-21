@@ -8,7 +8,7 @@ public class CreateDatabase {
 		try {
 		      Connection con = DriverManager.getConnection
 		        ("jdbc:derby://localhost:3301/test;create=true"); 
-		      
+		      System.out.println("Database succeed");
 		 
 		      Statement stmt = con.createStatement();
 	//********Code to create table Companies *************
