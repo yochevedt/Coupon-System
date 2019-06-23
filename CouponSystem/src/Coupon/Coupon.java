@@ -137,10 +137,7 @@ public class Coupon {
 				+ image + "]";
 	}
 
-	//public String getStartDate(String startDate) {
-	// TODO Auto-generated method stub
-	//return null;
-	//}
+	
 	
 	public String getStartDate(String startDate) {
 		setStartDate(getStartDate());

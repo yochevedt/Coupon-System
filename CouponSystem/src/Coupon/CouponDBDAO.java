@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.TimeZone;
 import org.apache.derby.client.am.SqlException;
+
+import com.sun.org.apache.regexp.internal.recompile;
+
 import Database.Database;
 import sun.util.calendar.CalendarDate;
 import java.sql.*;
@@ -16,6 +19,7 @@ import java.time.ZoneId;
 
 public class CouponDBDAO implements CouponDAO {
 	Connection con;
+	private char[] SQLException;
 	
 	
 	@Override
@@ -108,8 +112,10 @@ public class CouponDBDAO implements CouponDAO {
 	DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
 	formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 	String dateFormatted = formatter.format(date);
+		
 
 	LocalDate myLocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	System.out.println( SQLException  );
 	LocalDate exparationDate= myLocalDate.plusDays(10);
 	//Date date2 = Date.valueOf(myLocalDate);
 	//Date updatedDate = Date.valueOf(exparationDate);
@@ -142,6 +148,7 @@ public class CouponDBDAO implements CouponDAO {
 	public synchronized Set<Coupon> getAllCoupons() throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());
 		Set<Coupon> set = new HashSet<>();
+		
 		String sql = "SELECT id FROM Coupons";
 		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
 			while (rs.next()) {
@@ -169,5 +176,4 @@ public class CouponDBDAO implements CouponDAO {
 
 		return set;
 	}
-
 }

@@ -207,8 +207,9 @@ public class AdminFacade  {
  	/****************Coupons Methods ********************************/
  	/***Method Get all coupons **/
  	 public Set<Coupon> getAllCoupons() throws Exception {
- 		// CompanyDBDAO comDAO=new CompanyDBDAO();
+ 		
  		return couponDBDAO.getAllCoupons();
+ 		
  	}
  	public void insertCoupon(Coupon coupon) throws Exception {
 		//String getDBURL = null;
@@ -251,7 +252,6 @@ public class AdminFacade  {
 			con.close();
 		}
 	}
-
 	
  }
      
