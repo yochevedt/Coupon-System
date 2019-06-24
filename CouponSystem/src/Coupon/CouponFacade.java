@@ -20,15 +20,16 @@ public class CouponFacade {
 	public CouponFacade() {
 
 	}
- 
+	
 	public void insertCoupon(Coupon coupon) throws Exception {
-		couponDAO.insertCoupon(coupon);
-		
+	 couponDAO.insertCoupon(coupon);
+			
 		System.out.println("the inserted coupons are" + getAllCoupons());
 	}
 
+	
 	public void removeCoupon(Coupon coupon) throws Exception {
-		couponDAO.insertCoupon(coupon);
+		couponDAO.removeCoupon(coupon);
 	}
 
 	public void updateCoupon(Coupon coupon, String newTitle, LocalDate newStartDate, LocalDate newEndDate, 
@@ -52,7 +53,6 @@ public class CouponFacade {
 	}
 
 	public Set<Coupon> getAllCoupons() throws Exception {
-		// CompanyDBDAO comDAO=new CompanyDBDAO();
 		return couponDAO.getAllCoupons();
 		
 	}

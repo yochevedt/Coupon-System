@@ -77,8 +77,8 @@ public class AdminTest {
 	               /**Coupons Tests for Admin **/
 	
 	/***Show coupons method *****/
-//	coupons = ((AdminFacade) facade).getAllCoupons();
-	//System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
+     // coupons = ((AdminFacade) facade).getAllCoupons();
+  	//  System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
 	
 	/*******************************************************************************/
 	
@@ -86,7 +86,7 @@ public class AdminTest {
 	
 //	Coupon K01= new Coupon(700, "Super1", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //	Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
-    Coupon K03= new Coupon(709, "Super311", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+    Coupon K03= new Coupon(711, "Super311", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
     java.sql.Date.valueOf(LocalDate.now());
 	java.sql.Date.valueOf(LocalDate.now().plusDays(10));
@@ -94,7 +94,7 @@ public class AdminTest {
 //	
 //	((AdminFacade) facade).insertCoupon(K01);
 //	((AdminFacade) facade).insertCoupon(K02);
-   //((AdminFacade) facade).insertCoupon(K03);
+    ((AdminFacade) facade).insertCoupon(K03);
 	//System.out.println("New Coupons were added to the System " + K01 + K02 + K03 );
 	System.out.println("New Coupons were added to the System " + K03 );
 //	

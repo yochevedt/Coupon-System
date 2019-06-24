@@ -37,7 +37,7 @@ public class AdminFacade  {
 	/**Data members**/
     private  CompanyDBDAO companyDAO = new CompanyDBDAO();
     private CustomerDBDAO custDAO = new CustomerDBDAO();
-    private CouponDBDAO couponDBDAO = new CouponDBDAO();
+    private CouponDBDAO couponDAO = new CouponDBDAO();
     private String name = "admin";
     private String password = "1234";
     
@@ -208,7 +208,9 @@ public class AdminFacade  {
  	/***Method Get all coupons **/
  	 public Set<Coupon> getAllCoupons() throws Exception {
  		
- 		return couponDBDAO.getAllCoupons();
+ 		// System.out.println("Coupons list is : " + couponDAO.getAllCoupons());
+ 		return couponDAO.getAllCoupons();
+ 		 
  		
  	}
  	public void insertCoupon(Coupon coupon) throws Exception {
