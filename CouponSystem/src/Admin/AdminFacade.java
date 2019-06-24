@@ -207,6 +207,14 @@ public class AdminFacade  {
  		return custDAO.getAllCustomers();
  	}
 
+ 	public void PrintCustumerlist() throws Exception{
+		CustomerDAO custDAO = new CustomerDBDAO();
+		custDAO.getAllCustomers();
+		System.out.println("This is the customer list " + custDAO.getAllCustomers());
+		
+	}
+ 	
+ 	
  	/****************Coupons Methods ********************************/
  	/***Method Get all coupons **/
  	 

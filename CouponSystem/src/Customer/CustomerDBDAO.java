@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 
 import Company.Company;
 import Database.Database;
+import sun.awt.geom.AreaOp.AddOp;
 
 
 	public class CustomerDBDAO implements CustomerDAO {
@@ -102,7 +103,8 @@ import Database.Database;
 
 		@Override
 		public synchronized Set<Customer> getAllCustomers() throws Exception {
-			con = DriverManager.getConnection(Database.getDBURL());
+			//con = DriverManager.getConnection(Database.getDBURL());
+			Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
 			Set<Customer> set = new HashSet<>();
 			String sql = "SELECT id FROM Customers";
 			try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
@@ -112,6 +114,8 @@ import Database.Database;
 					String password = rs.getString(1);
 
 					set.add(new Customer(id, customerName, password));
+			
+					
 				}
 			} catch (SQLException e) {
 				System.out.println(e);

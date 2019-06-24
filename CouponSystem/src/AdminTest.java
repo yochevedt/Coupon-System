@@ -131,22 +131,32 @@ public class AdminTest {
  /*************/
  /**Create Customer method for AdminFacade**/
 		      
-		      Customer A1 = new Customer(5, "Yaakov Levy", "YTPassword1");
-		      Customer A2 = new Customer(6, "Abrahom Russek", "YTPassword2");
-		      Customer A3 = new Customer(7, "Liba Corazon", "YTPassword3");
-		      Customer A4 = new Customer(8, "Biby Cohen", "YTPassword4");
- 
-	((AdminFacade) facade).CreateCustomer(A1);
-	((AdminFacade) facade).CreateCustomer(A2);
-	((AdminFacade) facade).CreateCustomer(A3);
-	((AdminFacade) facade).CreateCustomer(A4);
+		      /**this method is working**/
+		      
+//		      Customer A1 = new Customer(5, "Yaakov Levy", "YTPassword1");
+//		      Customer A2 = new Customer(6, "Abrahom Russek", "YTPassword2");
+//		      Customer A3 = new Customer(7, "Liba Corazon", "YTPassword3");
+//		      Customer A4 = new Customer(8, "Biby Cohen", "YTPassword4");
+// 
+//	((AdminFacade) facade).CreateCustomer(A1);
+//	((AdminFacade) facade).CreateCustomer(A2);
+//	((AdminFacade) facade).CreateCustomer(A3);
+//	((AdminFacade) facade).CreateCustomer(A4);
  
  
  /*************/
  /**GetAll-Customers method (Customer list displayed) by Admin ***/
  
+ /**Display all the Customer list**
+  * getAllCustomer method
+  */
  
- 
+	((AdminFacade) facade).getAllCustomers();
+	((AdminFacade) facade).PrintCustumerlist();
+	System.out.println("Method get.AllCustomers is working /n "
+			+ "the list customer is : " + facade.getAllCustomers());
+	
+		      
  
  /***********/
  /**Display specific Customer details **/

@@ -25,7 +25,8 @@ public class Customer {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-
+	
+	
 	public String getPassword() {
 		return password;
 	}
@@ -43,10 +44,14 @@ public class Customer {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", customerName=" + customerName + ", password=" + password
 				+ ", getCustomerName()=" + getCustomerName() + ", get()=" + getPassword() + ", getId()=" + getId() + "]";
 	}
 
+	
+	
+	
 }
