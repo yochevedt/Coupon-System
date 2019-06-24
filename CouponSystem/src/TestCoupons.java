@@ -26,6 +26,7 @@ public class TestCoupons {
 	
 	CouponFacade couponFacade  = new CouponFacade();
 	System.out.println(couponFacade.getAllCoupons());
+	System.out.println("Displaying all coupons");
 //		
  // couponFacade.insertCoupon(K1);
     // couponFacade.insertCoupon(K5);
@@ -34,13 +35,14 @@ public class TestCoupons {
   //  couponFacade.insertCoupon(K13);
     //couponFacade.insertCoupon(K15);
     
-    LocalDate newEndDate = null;
-	LocalDate newStartDate = null;
-	couponFacade.updateCoupon2(K13, "SuperEditedC", newStartDate, newEndDate, 700, "typefood", "editedCoupon", 1500, "newImage");
-   
+//    LocalDate newEndDate = null;
+//	LocalDate newStartDate = null;
+//	couponFacade.updateCoupon2(K13, "SuperEditedC", newStartDate, newEndDate, 700, "typefood", "editedCoupon", 1500, "newImage");
+//   
 	} catch (Exception e) {
 		// TODO: handle exception
-		System.out.println("Failed to add coupons");
+		//System.out.println("Failed to add coupons");
+		//System.out.println("Failed to update coupons");
 	}
 	
 	

@@ -152,15 +152,15 @@ public class CouponDBDAO implements CouponDAO {
 		String sql = "SELECT id FROM Coupons";
 		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
 			while (rs.next()) {
-				long id = rs.getLong(1);
-				String title = rs.getString(1);
-			  // Date startDate = rs.getDate(1);
-			 //  Date endDate = rs.getDate(1);
-				int amount = rs.getInt(1);
-				String type = rs.getString(1);
-				String message = rs.getString(1);
-				double price = rs.getDouble(1);
-				String image = rs.getString(1);
+			long id = rs.getLong(1);
+			String title = rs.getString(1);
+	  	// Date startDate = rs.getDate(1);
+		// Date endDate = rs.getDate(1);
+			int amount = rs.getInt(1);
+			String type = rs.getString(1);
+			String message = rs.getString(1);
+			double price = rs.getDouble(1);
+  		    String image = rs.getString(1);
 				
 		
              set.add(new Coupon());
@@ -168,6 +168,7 @@ public class CouponDBDAO implements CouponDAO {
 			LocalDate endDate1 = null;
 			//    set.add(new Coupon(id, title, startDate, endDate, amount, type, message, price, image));
              set.add(new Coupon(id, title, startDate1, endDate1, amount, type, message, price, image));
+             System.out.println("list coupons is " + couponDAO.getAllCoupons());
 			}
 		} catch (SQLException e) {
 			//System.out.println(e);
@@ -178,5 +179,10 @@ public class CouponDBDAO implements CouponDAO {
 		}
 
 		return set;
+	}
+
+	public void removeCoupon(long id) throws Exception {
+		// TODO Auto-generated method stub
+		couponDAO.removeCoupon(getCoupon(id));
 	}
 }

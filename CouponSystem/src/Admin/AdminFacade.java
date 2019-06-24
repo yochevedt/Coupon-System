@@ -206,13 +206,15 @@ public class AdminFacade  {
 
  	/****************Coupons Methods ********************************/
  	/***Method Get all coupons **/
- 	 public Set<Coupon> getAllCoupons() throws Exception {
- 		
- 		// System.out.println("Coupons list is : " + couponDAO.getAllCoupons());
- 		return couponDAO.getAllCoupons();
+ 	 
  		 
+ 		public Set<Coupon> getAllCoupons() throws Exception {
+ 			return couponDAO.getAllCoupons();
+ 			
+ 		}	
  		
- 	}
+ 		
+ 	
  	public void insertCoupon(Coupon coupon) throws Exception {
 		//String getDBURL = null;
 		Connection con = DriverManager.getConnection(Database.getDBURL());
@@ -253,8 +255,40 @@ public class AdminFacade  {
 		} finally {
 			con.close();
 		}
+				
 	}
+	 public   void RemoveCoupon (Coupon coupon) {
+		 try {
+			couponDAO.removeCoupon(coupon.getId());
+			System.out.println("The coupon was removed: " + coupon);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Failed to remove coupon by Admin");
+			e.printStackTrace();
+		}
+	 }
+/////////////
+	 /**************************************************************************************************************/
+	              /*************Customers tests for Admin Facade **********************/
+	 
+	 /*************/
+	 /**Create Customer method for AdminFacade**/
+	 
+	 
+	 
+	 /*************/
+	 /**GetAll-Customers method (Customer list displayed) by Admin ***/
+	 
+	 
+	 
+	 
+	 /***********/
+	 /**Display specific Customer details **/
+
 	
+	 /************/
+	 /*****Remove Customer and display getAllCustomer after remove Customer *******/
+ 	
  }
      
      

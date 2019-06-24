@@ -32,7 +32,7 @@ public class Coupon {
 		LocalDate myLocalDate = date.toLocalDate();
 		LocalDate exparationDate= myLocalDate.plusDays(10);
 	
-	    System.out.println(myLocalDate);
+	   // System.out.println(myLocalDate);
 		
 	  setId(id);  
 	  setTitle(title);

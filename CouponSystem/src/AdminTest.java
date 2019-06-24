@@ -86,20 +86,25 @@ public class AdminTest {
 	
 //	Coupon K01= new Coupon(700, "Super1", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //	Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
-    Coupon K03= new Coupon(713, "Super1234", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+  //  Coupon K03= new Coupon(714, "Super12340", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
-    java.sql.Date.valueOf(LocalDate.now());
-	java.sql.Date.valueOf(LocalDate.now().plusDays(10));
+      java.sql.Date.valueOf(LocalDate.now());
+     java.sql.Date.valueOf(LocalDate.now().plusDays(10));
 	System.out.println("connection");
 //	
 //	((AdminFacade) facade).insertCoupon(K01);
 //	((AdminFacade) facade).insertCoupon(K02);
-    ((AdminFacade) facade).insertCoupon(K03);
+    //((AdminFacade) facade).insertCoupon(K03);
 	//System.out.println("New Coupons were added to the System " + K01 + K02 + K03 );
-	System.out.println("New Coupons were added to the System " + K03 );
+	//System.out.println("New Coupons were added to the System " + K03 );
 //	
 	/**Display all coupons after Creating new Coupons**/
 	//coupons = ((AdminFacade) facade).getAllCoupons();
+	
+	
+	/**getAllCoupons method is not working - there is a problem when getting the data from the db **/
+	
+	//coupons =  ((AdminFacade) facade).getAllCoupons();
 	//System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
 	
 	
@@ -107,9 +112,19 @@ public class AdminTest {
 		      
 	/************************************************************************************/	  
 		      
-      /******Update Coupons ******/
+      /******Update Coupons ******Not working yet need to fix the getAllCoupons*/
 	//Coupon coupon = ((AdminFacade) facade).getCoupon((long) 700);	 
 	//System.out.println("This method is getCoupon by ID will display Coupon Details : " + coupon);
+	
+	Coupon K03 = null;
+	/*************************/
+	/****Remove coupons method **/
+	//Need to be added this mehtod//
+	
+	((AdminFacade) facade).RemoveCoupon(K03);
+	
+	
+	
 	
 }
 }}
