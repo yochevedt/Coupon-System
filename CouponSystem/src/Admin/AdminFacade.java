@@ -25,7 +25,6 @@ import Company.*;
 import Coupon.Coupon;
 import Coupon.CouponDBDAO;
 import Customer.*;
-import Customer.CustomerDBDAO;
 import Database.Database;
 
 
@@ -157,7 +156,11 @@ public class AdminFacade  {
 		return companyDAO.getAllCompanies();
 	}
 
-     /************Customer Methods to be applied by Admin****************/
+     /************************/
+    /**************************************************************************************************************/
+    /*************Customers Methods  for Admin Facade **********************/
+
+
 	
         public void CreateCustomer(Customer customer) throws Exception {
             Set<Customer> allCustomers = new HashSet<Customer>();
@@ -173,8 +176,8 @@ public class AdminFacade  {
 			return;
 			}
 		}
-	
-			custDAO.createCustomer(customer);
+	 	 custDAO.CreateCustomer(customer);
+		 System.out.println("Customer was created successfully");
 		
 	     }
 
@@ -269,11 +272,13 @@ public class AdminFacade  {
 	 }
 /////////////
 	 /**************************************************************************************************************/
-	              /*************Customers tests for Admin Facade **********************/
+	              /*************Customers Methods  for Admin Facade **********************/
 	 
 	 /*************/
-	 /**Create Customer method for AdminFacade**/
+	 /**Create Customer method for AdminFacade
+	 * @throws Exception **/
 	 
+	
 	 
 	 
 	 /*************/

@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class CustomerFacade {
 	
-	private CustomerDBDAO companyDAO = new CustomerDBDAO();
+	private CustomerDBDAO custDBDAO = new CustomerDBDAO();
 	private Customer customer;
 
 	public CustomerFacade(Customer A) {
@@ -16,11 +16,13 @@ public class CustomerFacade {
 	}
 
 	public void insertCustomer(Customer customer) throws Exception {
-		companyDAO.insertCustomer(customer);
+		
+		custDBDAO.insertCustomer(customer);
 	}
 
 	public void removeCustomer(Customer customer) throws Exception {
-		companyDAO.insertCustomer(customer);
+		
+		custDBDAO.removeCustomer(customer);
 	}
 
 	public void updateCustomer(Customer customer, String newCustName, String newCustPassword)
@@ -36,7 +38,7 @@ public class CustomerFacade {
 
 	public Set<Customer> getAllCustomers() throws Exception {
 		// CompanyDBDAO comDAO=new CompanyDBDAO();
-		return companyDAO.getAllCustomers();
+		return custDBDAO.getAllCustomers();
 	}
 
 }

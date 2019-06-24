@@ -21,8 +21,7 @@ import Database.Database;
 		Connection con;
 		
 
-		@Override
-		public void insertCustomer(Customer customer) throws Exception {
+		public void CreateCustomer(Customer customer) throws Exception {
 			//String getDBURL = null;
 			con = DriverManager.getConnection(Database.getDBURL());
 			String sql = "INSERT INTO CUSTOMERS (id,customerName,password)  VALUES(?,?,?)";
@@ -124,38 +123,39 @@ import Database.Database;
 			return set;
 		}
 
-		public void createCustomer(Customer customer) throws Exception {
+	//	public void createCustomer(Customer customer) throws Exception {
 			// TODO:
 			//Auto-generated method stub
 			//check if customer exist - bring AllCustomers
 			//make a loop while and if the customer  exist exit, if not exist insert method.
 			//add insert customer method.
 			//add System prints to exit and System prints to added company
-			con = DriverManager.getConnection(Database.getDBURL());
-			Set<Customer> allCustomers = new HashSet<>();
-			allCustomers = custDAO.getAllCustomers();
 			
-			Iterator<Customer> iterator = allCustomers.iterator();
-			
-			while (iterator.hasNext()) {
-				
-				Customer customer2 = new Customer();
-				customer2 = iterator.next();
-					if  (customer2 instanceof Customer && customer.getCustomerName().equals(customer.getCustomerName()))
-						{
-			      	// verify if Company   exist (with compare) and if already exist
-				
-				JFrame frame = new JFrame("JOptionPane -Checking data");
-				JOptionPane.showMessageDialog(frame, "the Customer" + customer.getCustomerName()+ "Customer already exit");
-				return;
-
-			}
-
-		       custDAO.insertCustomer(customer);
-		       JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-		      JOptionPane.showMessageDialog(frame, "Customer " + customer.getCustomerName() + "has been Created");
-	       }
-		}
+			//Yailin Code //
+//			con = DriverManager.getConnection(Database.getDBURL());
+//			Set<Customer> allCustomers = new HashSet<>();
+//			allCustomers = custDAO.getAllCustomers();
+//			
+//			Iterator<Customer> iterator = allCustomers.iterator();
+//			
+//			while (iterator.hasNext()) {
+//				
+//				Customer customer2 = new Customer();
+//				customer2 = iterator.next();
+//					if  (customer2 instanceof Customer && customer.getCustomerName().equals(customer.getCustomerName()))
+//						{
+//			      	// verify if Company   exist (with compare) and if already exist
+//				
+//				JFrame frame = new JFrame("JOptionPane -Checking data");
+//				JOptionPane.showMessageDialog(frame, "the Customer" + customer.getCustomerName()+ "Customer already exit");
+//				return;
+//
+////			}
+//
+//		       custDAO.insertCustomer(customer);
+//		       System.out.println("Customer created successfully");
+//	       }
+		
 		
 		public void removeCustomerCoupons(Customer customer) {
 			
@@ -166,6 +166,12 @@ import Database.Database;
 			//need to create a while loop, that checks if Customer id  exist or not in Costumer table
 			//if not exist remove all the coupons that has Customer id in the same row.
 			//if exist do nothing.
+			
+		}
+
+		@Override
+		public void insertCustomer(Customer customer) throws Exception {
+			// TODO Auto-generated method stub
 			
 		}
 

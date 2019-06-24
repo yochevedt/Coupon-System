@@ -116,17 +116,45 @@ public class AdminTest {
 	//Coupon coupon = ((AdminFacade) facade).getCoupon((long) 700);	 
 	//System.out.println("This method is getCoupon by ID will display Coupon Details : " + coupon);
 	
-	Coupon K03 = null;
+	//Coupon K03 = null;
 	/*************************/
 	/****Remove coupons method **/
-	//Need to be added this mehtod//
+	//Need to be added this method//
 	
-	((AdminFacade) facade).RemoveCoupon(K03);
-	
-	
-	
+	//((AdminFacade) facade).RemoveCoupon(K03);
 	
 }
+		      
+		      /**************************************************************************************************************/
+              /*************Customers tests for Admin Facade **********************/
+ 
+ /*************/
+ /**Create Customer method for AdminFacade**/
+		      
+		      Customer A1 = new Customer(5, "Yaakov Levy", "YTPassword1");
+		      Customer A2 = new Customer(6, "Abrahom Russek", "YTPassword2");
+		      Customer A3 = new Customer(7, "Liba Corazon", "YTPassword3");
+		      Customer A4 = new Customer(8, "Biby Cohen", "YTPassword4");
+ 
+	((AdminFacade) facade).CreateCustomer(A1);
+	((AdminFacade) facade).CreateCustomer(A2);
+	((AdminFacade) facade).CreateCustomer(A3);
+	((AdminFacade) facade).CreateCustomer(A4);
+ 
+ 
+ /*************/
+ /**GetAll-Customers method (Customer list displayed) by Admin ***/
+ 
+ 
+ 
+ 
+ /***********/
+ /**Display specific Customer details **/
+
+
+ /************/
+ /*****Remove Customer and display getAllCustomer after remove Customer *******/
+	
 }}
 	
 		
