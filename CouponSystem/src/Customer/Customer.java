@@ -1,20 +1,22 @@
 package Customer;
 
+import java.util.Set;
+
 public class Customer {
 	private long id;
 	private String customerName;
 	private String password;
 	
+	
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+
+	
 	public Customer (long id, String customerName, String password){
 	setId(id);
 	setCustomerName(customerName);
 	setPassword(password);
-	}
-
-
-	
-	public Customer() {
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -44,12 +46,18 @@ public class Customer {
 	}
 
 
+	
+
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", customerName=" + customerName + ", password=" + password
-				+ ", getCustomerName()=" + getCustomerName() + ", get()=" + getPassword() + ", getId()=" + getId() + "]";
+		return "Customer [getCustomerName()=" + getCustomerName() + ", getPassword()=" + getPassword() + ", getId()="
+				+ getId() + "]";
 	}
+
+
+
+	
 
 	
 	

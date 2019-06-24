@@ -1,17 +1,20 @@
 package Customer;
 
 	import java.sql.Connection;
-	import java.sql.DriverManager;
-	import java.sql.PreparedStatement;
-	import java.sql.ResultSet;
-	import java.sql.SQLException;
-	import java.sql.Statement;
-	import java.util.HashSet;
+
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
+import com.sun.xml.internal.ws.message.stream.StreamHeader11;
 
 import Company.Company;
 import Database.Database;
@@ -106,19 +109,22 @@ import sun.awt.geom.AreaOp.AddOp;
 			//con = DriverManager.getConnection(Database.getDBURL());
 			Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
 			Set<Customer> set = new HashSet<>();
-			String sql = "SELECT id FROM Customers";
-			try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
+			String sql = "SELECT * FROM Customers";
+			
+			try (Statement stm = con.createStatement(); 
+					ResultSet rs = stm.executeQuery(sql)) {
 				while (rs.next()) {
+			
 					long id = rs.getLong(1);
-					String customerName = rs.getString(1);
-					String password = rs.getString(1);
+					String customerName = rs.getString(2);
+					String password = rs.getString(3);
 
 					set.add(new Customer(id, customerName, password));
-			
 					
-				}
+				}		
+				
 			} catch (SQLException e) {
-				System.out.println(e);
+				System.out.println("cannot get data list - getAllCustomers " + e);
 				throw new Exception("cannot get Customer data");
 			} finally {
 				con.close();
