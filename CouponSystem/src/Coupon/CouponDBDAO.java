@@ -154,8 +154,8 @@ public class CouponDBDAO implements CouponDAO {
 			while (rs.next()) {
 				long id = rs.getLong(1);
 				String title = rs.getString(1);
-			   Date startDate = rs.getDate(1);
-			   Date endDate = rs.getDate(1);
+			  // Date startDate = rs.getDate(1);
+			 //  Date endDate = rs.getDate(1);
 				int amount = rs.getInt(1);
 				String type = rs.getString(1);
 				String message = rs.getString(1);

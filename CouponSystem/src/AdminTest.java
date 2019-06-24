@@ -86,7 +86,7 @@ public class AdminTest {
 	
 //	Coupon K01= new Coupon(700, "Super1", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //	Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
-    Coupon K03= new Coupon(711, "Super311", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+    Coupon K03= new Coupon(713, "Super1234", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
     java.sql.Date.valueOf(LocalDate.now());
 	java.sql.Date.valueOf(LocalDate.now().plusDays(10));

@@ -57,5 +57,11 @@ public class CouponFacade {
 		
 	}
 
+	public void updateCoupon2(Coupon k13, String newTitle, LocalDate newStartDate, LocalDate newEndDate, int newAmount,
+			String newType, String newMessage, int i, String newImage) throws Exception {
+		couponDAO.updateCoupon(coupon);
+				
+	}
+
 }
 
