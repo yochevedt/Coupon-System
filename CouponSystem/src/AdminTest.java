@@ -49,19 +49,19 @@ public class AdminTest {
    /****Show All companies method (working) *******************/
                     
      // Show all companies (After creating new companies - before update).
-	//*companies = ((AdminFacade) facade).getAllCompanies();
-	//*System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
-		            
+	companies = ((AdminFacade) facade).getAllCompanies();
+	System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
+	System.out.println("List of companies is : " + facade.getAllCompanies());	            
 	/********************************************************************/			
 		/**Update Company Test -- (not working yet)**/
-	//((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
+	((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
 		
 	/********************************************************************/
 	 
 	// Show One updated company id=5
 	/**Display company details according to id (method is working)**/
 	
-	//Company company1 = ((AdminFacade) facade).getCompany(63);
+	 ((AdminFacade) facade).getCompany(63);
 	//System.out.println("Display company details - according to company id : " + company1.toString());
 		      
 	/********************************************************************/
@@ -145,16 +145,16 @@ public class AdminTest {
  
  
  /*************/
- /**GetAll-Customers method (Customer list displayed) by Admin ***/
+ /**GetAll-Customers method (Customer list displayed) by Admin *this method is working ***/
  
  /**Display all the Customer list**
   * getAllCustomer method
   */
  
-	((AdminFacade) facade).getAllCustomers();
-	((AdminFacade) facade).PrintCustumerlist();
-	System.out.println("Method get.AllCustomers is working /n "
-			+ "the list customer is : " + facade.getAllCustomers());
+	//((AdminFacade) facade).getAllCustomers();
+	//((AdminFacade) facade).PrintCustumerlist();
+	//System.out.println("Method get.AllCustomers is working /n "
+		//	+ "the list customer is : " + facade.getAllCustomers());
 	
 		      
  

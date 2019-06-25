@@ -68,23 +68,15 @@ public  class CompanyDBDAO implements CompanyDAO {
 	
 	@Override
 	public void updateCompany(Company company) throws Exception {
-		con = DriverManager.getConnection(Database.getDBURL());
-//		try (Statement stm = con.createStatement()) {
-//			String sql = "UPDATE Companies " + " SET companyName='" + company.getCompanyName() + "', password "
-//					+ company.getPassoword() + "', email " + company.getEmail() + "' WHERE ID=" + company.getId();
-
-		//try (Statement stm = con.createStatement()) {
-		
-		System.out.printf("Starting to add update data" );	
-		
+		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
+	
 		try {
 			String sql = "update Companies set COMPANYNAME= ?,PASSWORD = ?, EMAIL= ? where ID = ?";
 			PreparedStatement stm1 = con.prepareStatement(sql);
+			System.out.println("Database exception " + sql );
 			stm1.setString(1, company.getCompanyName());
-			
-			//stm1.setString(1, company.getCompanyName());
 			stm1.setString(2, company.getPassoword());
-			stm1.setString(3, company.getEmail());
+			stm1.setString(3, company.getPassoword());
 			stm1.setLong(4, company.getId());
 			stm1.executeUpdate();
 		} catch (SQLException e) {
@@ -96,10 +88,7 @@ public  class CompanyDBDAO implements CompanyDAO {
 				throw new Exception("connection close failed " + e.getMessage());
 			}
 		}
-		
-		
-		
-		
+	
 		
 		
 //		try (Statement stmt = con.createStatement()) {
@@ -127,7 +116,8 @@ public  class CompanyDBDAO implements CompanyDAO {
 	@Override
 	public Company getCompany(long id) throws Exception {
 		con = DriverManager.getConnection(Database.getDBURL());
-		Company company = new Company();
+		//Company company = new Company();
+		Company company = null;
 		try (Statement stm = con.createStatement()) {
 			String sql = "SELECT * FROM COMPANIES WHERE ID=" + id;
 			ResultSet rs = stm.executeQuery(sql);
@@ -146,19 +136,19 @@ public  class CompanyDBDAO implements CompanyDAO {
 		}
 		return company;
 	}
-	@SuppressWarnings("unused")
+	
 	@Override
 	public synchronized Set<Company> getAllCompanies() throws Exception {
 	//	con = DriverManager.getConnection(Database.getDBURL());
 		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
 		Set<Company> set = new HashSet<>();
-		String sql = "SELECT id FROM Companies";
+		String sql = "SELECT * FROM Companies";
 		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
 			while (rs.next()) {
 				long id = rs.getLong(1);
-				String companyName = rs.getString(1);
-				String password = rs.getString(1);
-				String email = rs.getString(1);
+				String companyName = rs.getString(2);
+				String password = rs.getString(3);
+				String email = rs.getString(4);
 
 				set.add(new Company(id, companyName, password, email));
 			}
