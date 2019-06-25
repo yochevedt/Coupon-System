@@ -49,19 +49,19 @@ public class AdminTest {
    /****Show All companies method (working) *******************/
                     
      // Show all companies (After creating new companies - before update).
-	companies = ((AdminFacade) facade).getAllCompanies();
-	System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
-	System.out.println("List of companies is : " + facade.getAllCompanies());	            
+	//companies = ((AdminFacade) facade).getAllCompanies();
+	//System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
+	//System.out.println("List of companies is : " + facade.getAllCompanies());	            
 	/********************************************************************/			
 		/**Update Company Test -- (not working yet)**/
-	((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
+	//((AdminFacade) facade).updateCompany(63, "RedBEND4", "red00red00", "harman@gmail.com");
 		
 	/********************************************************************/
 	 
 	// Show One updated company id=5
 	/**Display company details according to id (method is working)**/
 	
-	 ((AdminFacade) facade).getCompany(63);
+	 //((AdminFacade) facade).getCompany(63);
 	//System.out.println("Display company details - according to company id : " + company1.toString());
 		      
 	/********************************************************************/
@@ -156,10 +156,10 @@ public class AdminTest {
 	//System.out.println("Method get.AllCustomers is working /n "
 		//	+ "the list customer is : " + facade.getAllCustomers());
 	
-		      
- 
  /***********/
- /**Display specific Customer details **/
+ /**Display specific Customer details **/  /**this method is working**/
+     ((AdminFacade) facade).getCustomer(7);
+     System.out.println("Details custermer  with id : " + facade.getCustomer(7));
 
 
  /************/
