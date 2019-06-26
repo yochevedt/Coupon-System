@@ -39,6 +39,7 @@ public class AdminFacade  {
     private CouponDBDAO couponDAO = new CouponDBDAO();
     private String name = "admin";
     private String password = "1234";
+	private Customer customer;
     
    
     /**CTRS (constructors)**/
@@ -64,6 +65,8 @@ public class AdminFacade  {
 		this.password = password;
 	}
     
+	
+	 /*************************************************************/
      /**Login Method**/
     // public boolean Login (String name, String password, ClientTypes cType) throws Exception{
     	 public boolean Login (String name, String password) throws Exception{	
@@ -76,6 +79,9 @@ public class AdminFacade  {
  
       }
     
+    	 
+    	 /*************************************************************/
+    	 /***********************Company Methods   *********************************/
      /**CreateComany method**/
      public void CreateCompany(Company company) throws Exception {
 	  
@@ -83,7 +89,7 @@ public class AdminFacade  {
     	     	 
 	}
 
-    
+     /*************************************************************/
      /**Remove Company Method**/
     
      public void removeCompany(Company company) throws Exception {
@@ -110,6 +116,7 @@ public class AdminFacade  {
     	
   //  }
     
+     /*************************************************************/
 	/**Update Company method**/
      
 //     public void updateCompany(Company company) throws Exception{
@@ -137,6 +144,8 @@ public class AdminFacade  {
 	}
 	}  */
      
+     
+     /*************************************************************/
      /**Get company method in AdminFacade
      * @throws Exception **/
      public Company getCompany(long id) throws Exception {
@@ -145,22 +154,26 @@ public class AdminFacade  {
  		
  	}
      
+     /*************************************************************/
      public Company getCompanybyPW (Company company) throws Exception {
        return companyDAO.getCompanybyPW(password);
 
 	}
 	
-	  
+     /*************************************************************/
     public Set<Company> getAllCompanies() throws Exception {
 		// CompanyDBDAO comDAO=new CompanyDBDAO();
 		return companyDAO.getAllCompanies();
 	}
 
-     /************************/
+    
+    /*************************************************************/
     /**************************************************************************************************************/
     /*************Customers Methods  for Admin Facade **********************/
 
-
+    /*************/
+	 /**Create Customer method for AdminFacade
+	 * @throws Exception **/
 	
         public void CreateCustomer(Customer customer) throws Exception {
             Set<Customer> allCustomers = new HashSet<Customer>();
@@ -181,31 +194,63 @@ public class AdminFacade  {
 		
 	     }
 
+        /*************************************************************/
         
-     public void removeCustomer(Customer customer) throws Exception {
+        /***Remove customer method ***/
+        
+       public void removeCustomer(Customer customer) throws Exception {
 
  		// Update Customer coupons in CUSTOMER_COUPON Table
- 		custDAO.removeCustomerCoupons(customer);
+ 		//custDAO.removeCustomerCoupons(customer);
  		// Remove Customer from CUSTOMER Table
  		custDAO.removeCustomer(customer);
-
+ 		//Remove Customer by id
+ 		//custDAO.removeCustomerbyId(customer);
  	}
 
- 	public void updateCustomer(Customer customer) throws Exception {
+       public void removeCustomer(long id, String CustomerName, String Password) throws Exception {
+   		// TODO Auto-generated method stub
+    	  
+    	   custDAO.removeCustomerbyId(id);
+   		
+   	}
+
+
+       
+      /*************************************************************/
+      /*****updateCustomer method *****/
+       
+     	public void updateCustomer(Customer customer) throws Exception {
  		
  		custDAO.updateCustomer(customer);
  	   }
 
- 	
- 	public Customer getCustomer(long id) throws Exception {
+     	public void updateCustomer(long id, String CustomerName, String Password) throws Exception {
+    		
+    	custDAO.updateCustomer(customer);	
+    	} 	
+     /*************************************************************/
+	 /**Display specific Customer details **/
+
+ 	 	public Customer getCustomer(long id) throws Exception {
 
  		return custDAO.getCustomer(id);
  		}
 
+ 	 	
+ 	 	
+ 	 /*************************************************************/
+	 
+ 	 	/**GetAll-Customers method (Customer list displayed) by Admin ***/
+ 	
  	public Set<Customer> getAllCustomers() throws Exception {
 
  		return custDAO.getAllCustomers();
  	}
+ 	
+ 	 /*************************************************************/
+ 	
+ 	
 
  	public void PrintCustumerlist() throws Exception{
 		CustomerDAO custDAO = new CustomerDBDAO();
@@ -214,9 +259,8 @@ public class AdminFacade  {
 		
 	}
  	
- 	
- 	/****************Coupons Methods ********************************/
- 	/***Method Get all coupons **/
+ 	/*************/
+	 
  	 
  		 
  		public Set<Coupon> getAllCoupons() throws Exception {
@@ -224,7 +268,9 @@ public class AdminFacade  {
  			
  		}	
  		
+ 		/**********************************************************/
  		
+ 	/*************************************************************/	
  	
  	public void insertCoupon(Coupon coupon) throws Exception {
 		//String getDBURL = null;
@@ -268,6 +314,11 @@ public class AdminFacade  {
 		}
 				
 	}
+ 	
+ 	 /*************************************************************/
+ 	
+     /**Remove Coupon method **/
+ 	
 	 public   void RemoveCoupon (Coupon coupon) {
 		 try {
 			couponDAO.removeCoupon(coupon.getId());
@@ -278,54 +329,24 @@ public class AdminFacade  {
 			e.printStackTrace();
 		}
 	 }
-/////////////
+	 
+	 /*************************************************************/
+     /**
+      * Update Coupon method:
+      *(this method is failing in the data convertion)*/		 
+      
+	 public Coupon getCoupon(long id) throws Exception {
+			// TODO Auto-generated method stub
+		return couponDAO.getCoupon(id);  
+			
+		}
+
+		 
+}
+	 
+
 	 /**************************************************************************************************************/
-	              /*************Customers Methods  for Admin Facade **********************/
-	 
-	 /*************/
-	 /**Create Customer method for AdminFacade
-	 * @throws Exception **/
-	 
-	
-	 
-	 
-	 /*************/
-	 /**GetAll-Customers method (Customer list displayed) by Admin ***/
-	 
-	 
-	 
-	 
-	 /***********/
-	 /**Display specific Customer details **/
-
-	
-	 /************/
-	 /*****Remove Customer and display getAllCustomer after remove Customer *******/
- 	
- }
-     
-     
-	
-
-	
-
-
-
-	
-
-	
-	
-
-	
-	
-	 
-	
-   
-
- 
-	  
-
-	   
+	             
 		
 
 

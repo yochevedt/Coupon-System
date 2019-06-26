@@ -103,17 +103,18 @@ public class CouponDBDAO implements CouponDAO {
 	}
 
 	@Override
-	public Coupon getCoupon (long id) throws Exception {
-		con = DriverManager.getConnection(Database.getDBURL());
-	     Coupon coupon = new Coupon();
+	public Coupon getCoupon(long id) throws Exception {
+		//con = DriverManager.getConnection(Database.getDBURL());
+		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true"); 
+		
+		Coupon coupon = new Coupon();
 	        
 	     long timestamp = System.currentTimeMillis();
 	Date date = new Date(timestamp);
 	DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
 	formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-	String dateFormatted = formatter.format(date);
-		
 
+		
 	LocalDate myLocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 	System.out.println( SQLException  );
 	LocalDate exparationDate= myLocalDate.plusDays(10);
@@ -123,11 +124,14 @@ public class CouponDBDAO implements CouponDAO {
 		try (Statement stm = con.createStatement()) {
 			String sql = "SELECT * FROM COUPONS WHERE ID=" + id;
 			ResultSet rs = stm.executeQuery(sql);
+			
 			rs.next();
 			coupon.setId(rs.getLong(1));
 			coupon.setTitle(rs.getString(2));
-		    coupon.setStartDate(myLocalDate);
+		    
+			coupon.setStartDate(myLocalDate);
 			coupon.setEndDate(exparationDate);
+			
 			coupon.setAmount(rs.getInt(5));
 			coupon.setType(rs.getString(6));
 			coupon.setMessage(rs.getString(7));

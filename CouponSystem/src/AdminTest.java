@@ -17,6 +17,8 @@ import Company.Company;
 
 public class AdminTest {
 
+	
+
 	public static void main(String[] args) throws Exception {
 	
 	
@@ -113,7 +115,8 @@ public class AdminTest {
 	/************************************************************************************/	  
 		      
       /******Update Coupons ******Not working yet need to fix the getAllCoupons*/
-	//Coupon coupon = ((AdminFacade) facade).getCoupon((long) 700);	 
+	//Coupon coupon = ((AdminFacade) facade).getCoupon(700);	
+	//System.out.println("The coupon with id is : " + coupon.getId());
 	//System.out.println("This method is getCoupon by ID will display Coupon Details : " + coupon);
 	
 	//Coupon K03 = null;
@@ -138,7 +141,7 @@ public class AdminTest {
 //		      Customer A3 = new Customer(7, "Liba Corazon", "YTPassword3");
 //		      Customer A4 = new Customer(8, "Biby Cohen", "YTPassword4");
 // 
-//	((AdminFacade) facade).CreateCustomer(A1);
+// ((AdminFacade) facade).CreateCustomer(A1);
 //	((AdminFacade) facade).CreateCustomer(A2);
 //	((AdminFacade) facade).CreateCustomer(A3);
 //	((AdminFacade) facade).CreateCustomer(A4);
@@ -161,10 +164,30 @@ public class AdminTest {
      ((AdminFacade) facade).getCustomer(7);
      System.out.println("Details custermer  with id : " + facade.getCustomer(7));
 
+ /***********/
+     /**Update specific customer ***/
+     
+    // Customer A1 = new Customer(5, "Yaakov Levyinson", "YTPassword1");
+    
+   // ((AdminFacade) facade).updateCustomer(7, "Liva Corazooon2", "pass100");
+		   //   ((AdminFacade) facade).updateCustomer(5, "yakk", "pass1");
+    
+//    ((AdminFacade) facade).updateCustomer(7, "liba", "pass7777");
+//    System.out.println("Details custermer  with id : " + facade.getCustomer(7));
+//    
+  //  System.out.println("Method get.AllCustomers is working /n "
+    	//	+ "the list customer is : " + facade.getAllCustomers());
+     
+     
 
  /************/
  /*****Remove Customer and display getAllCustomer after remove Customer *******/
-	
+	 
+	// ((AdminFacade) facade).removeCustomer(id, CustomerName, Password);
+   ((AdminFacade) facade).removeCustomer(7, "liba", "passnot");
+   System.out.println("Method remove customer was triggered  " );
+    
+	 
 }}
 	
 		
