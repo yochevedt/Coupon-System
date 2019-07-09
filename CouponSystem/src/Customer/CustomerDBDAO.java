@@ -141,21 +141,20 @@ import sun.awt.geom.AreaOp.AddOp;
 			
 			PreparedStatement pstms = null;
 			System.out.println("Starting to update data..................");
-			String sql = "UPDATE CUSTOMERS  SET  CUSTOMERNAME = ?,PASSWORD = ? WHERE ID = ?";
+			String sql = "UPDATE CUSTOMERS  SET  customerName = ?, password = ? WHERE id = ?";
 			try {
 						
 				while (itr.hasNext()) {
 					Customer customer2 = new Customer();
 				    customer2 = itr.next();
-				    
 				    pstms = con.prepareStatement(sql);
 		
 			    if (customer2.getCustomerName().equals(customer.getCustomerName())){ 
 				
 					System.out.println("Starting to update data");					
 					pstms.setLong(1, customer.getId());
-						System.out.println("Starting to update data");
-						pstms.setString(2, customer.getCustomerName());
+					System.out.println("Starting to update data");
+					pstms.setString(2, customer2.getCustomerName());
 					pstms.setString(3, customer.getPassword());
 						pstms.executeUpdate();
 						}

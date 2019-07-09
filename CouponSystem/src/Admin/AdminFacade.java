@@ -4,6 +4,7 @@ import JavaBeans.CustomerCoupons;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
@@ -99,12 +100,13 @@ public class AdminFacade  {
 	}
 
      /*************************************************************/
-     /**Remove Company Method**/
+     /**Remove Company Method
+     * @return **/
     
-     public void removeCompany(Company company) throws Exception {
+     public Company removeCompany(Company company) throws Exception {
  		Connection con = DriverManager.getConnection(Database.getDBURL());
- 		String pre1 = "DELETE FROM Companies WHERE id=?";
-
+ 		String pre1 = "DELETE FROM COMPANIES WHERE ID=?";
+          
  		try (PreparedStatement pstm1 = con.prepareStatement(pre1);) {
  			con.setAutoCommit(false);
  			pstm1.setLong(1, company.getId());
@@ -120,6 +122,7 @@ public class AdminFacade  {
  		} finally {
  			con.close();
  		}
+		return company;
   	}
      
     	
@@ -157,10 +160,34 @@ public class AdminFacade  {
      /*************************************************************/
      /**Get company method in AdminFacade
      * @throws Exception **/
-     public Company getCompany(long id) throws Exception {
- 		// TODO Auto-generated method stub
-    	 return companyDAO.getCompany(id);
- 		
+//     public Company getCompany(long id) throws Exception {
+// 		// TODO Auto-generated method stub
+//    	 return companyDAO.getCompany(id);
+// 		
+// 	}
+     
+	public Company getCompany(long id) throws Exception {
+ 		Connection con = DriverManager.getConnection(Database.getDBURL());
+ 		//Company company = new Company();
+ 		Company company = null;
+ 		try (Statement stm = con.createStatement()) {
+ 			String sql = "SELECT * FROM COMPANIES WHERE ID=" + id;
+ 			
+ 			ResultSet rs = stm.executeQuery(sql);
+ 			rs.next();
+            company.setId(rs.getLong(1));
+ 			company.setCompanyName(rs.getString(2));
+ 			company.setPassword(rs.getString(3));
+ 			company.setEmail(rs.getString(4));
+
+ 		} catch (SQLException e) {
+ 			System.out.println(e.getMessage());
+ 			System.out.println(e.getCause()+" "+e.getStackTrace());
+ 			throw new Exception("Unable to get data");
+ 		} finally {
+ 			con.close();
+ 		}
+ 		return company;
  	}
      
      /*************************************************************/

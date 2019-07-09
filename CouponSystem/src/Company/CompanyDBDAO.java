@@ -112,6 +112,9 @@ public  class CompanyDBDAO implements CompanyDAO {
 	}
 
 	
+	/******************************************************************************
+	 * get company by id
+	 ******************************************************************************/
 	
 	@Override
 	public Company getCompany(long id) throws Exception {
@@ -122,8 +125,7 @@ public  class CompanyDBDAO implements CompanyDAO {
 			String sql = "SELECT * FROM COMPANIES WHERE ID=" + id;
 			ResultSet rs = stm.executeQuery(sql);
 			rs.next();
-
-
+            company.setId(rs.getLong(1));
 			company.setCompanyName(rs.getString(2));
 			company.setPassword(rs.getString(3));
 			company.setEmail(rs.getString(4));
