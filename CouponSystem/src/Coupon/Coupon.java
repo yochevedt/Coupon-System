@@ -10,6 +10,8 @@ import com.sun.org.apache.xpath.internal.operations.Equals;
 import java.time.*;
 
 
+  
+
 public class Coupon {
    private long id;
    private String title;
@@ -21,8 +23,11 @@ public class Coupon {
    private double price;
    private String image;
    
+
   public Coupon (long id, String title, LocalDate startDate, LocalDate endDate, 
 	int amount, String type, String message, double price, String image){
+	  
+    super();
 	  
 	long timestamp = System.currentTimeMillis();
 		Date date = new Date(timestamp);
@@ -149,4 +154,12 @@ public class Coupon {
 		setEndDate(getEndDate());
 		return endDate;
 	}
+
+	public  long getCoupon(long id) {
+		Coupon coupon = new Coupon();
+	
+		return coupon.id;
+		
+	}
+    
 }

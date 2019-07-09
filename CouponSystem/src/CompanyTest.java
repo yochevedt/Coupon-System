@@ -1,10 +1,12 @@
-package Company;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 import javax.swing.text.DefaultEditorKit.InsertBreakAction;
 
+import Company.Company;
+import Company.CompanyFacade;
 import Database.Database;
 import sun.security.action.GetBooleanAction;
 

@@ -24,4 +24,6 @@ public interface CouponDAO {
 
 		Set<Coupon> getAllCoupons() throws Exception;
 
+		void removeExpiredCoupon();
+
 }

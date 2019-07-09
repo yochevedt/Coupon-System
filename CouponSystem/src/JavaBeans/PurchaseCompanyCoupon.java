@@ -64,8 +64,7 @@ public class PurchaseCompanyCoupon {
 
 	}
 
-	    JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-    	JOptionPane.showMessageDialog(frame, "Inserted coupon " + coupon.getTitle() + " successfully");
+	    System.out.println("Insert Coupon successfully");
        }
 
 }

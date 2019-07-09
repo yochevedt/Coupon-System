@@ -1,5 +1,6 @@
 package JavaBeans;
 import Customer.*;
+import Admin.*;
 import Database.Database;
 import java.sql.*;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import Coupon.*;
     	 con = DriverManager.getConnection(Database.getDBURL()); 
     	 long idPK = 0;
     	 
-	    String sql1 = "SELECT * FROM COUPON";
+	    String sql1 = "SELECT * FROM COUPONS";
         String sql2 = " INSERT INTO CUSTOMER_COUPON(CUST_ID,COUPON_ID) VALUES(?,?)";
 
 	    // Set the results from the database
@@ -60,7 +61,7 @@ import Coupon.*;
 
 	}
 
-	    JFrame frame = new JFrame("JOptionPane showMessageDialog example");
-    	JOptionPane.showMessageDialog(frame, "Inserted coupon " + coupon.getTitle() + " successfully");
+	    System.out.println("Coupons added successfully!!!!!!!!!!!!   /n"
+	    		+ "Thanks");
        }
 }

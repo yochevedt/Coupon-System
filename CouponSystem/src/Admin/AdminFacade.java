@@ -1,5 +1,6 @@
 package Admin;
 import java.sql.Connection;
+import JavaBeans.CustomerCoupons;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,6 +27,7 @@ import Coupon.Coupon;
 import Coupon.CouponDBDAO;
 import Customer.*;
 import Database.Database;
+import JavaBeans.CustomerCoupons;
 
 
 
@@ -33,10 +35,14 @@ import Database.Database;
 
 public class AdminFacade  {
 	
+	private static final String CouponId = null;
+	private static final CustomerCoupons CustId = null;
 	/**Data members**/
     private  CompanyDBDAO companyDAO = new CompanyDBDAO();
     private CustomerDBDAO custDAO = new CustomerDBDAO();
     private CouponDBDAO couponDAO = new CouponDBDAO();
+  //  private CustomerCoupons customerCoupons = new CustomerCoupons();
+    		
     private String name = "admin";
     private String password = "1234";
 	private Customer customer;
@@ -69,7 +75,7 @@ public class AdminFacade  {
 	 /*************************************************************/
      /**Login Method**/
     // public boolean Login (String name, String password, ClientTypes cType) throws Exception{
-    	 public boolean Login (String name, String password) throws Exception{	
+    	 public boolean login (String name, String password) throws Exception{	
     	if (name.equals(this.name) && password.equals(this.password))  {
     		System.out.println("Welcome to the Coupon System");
     		return true;
@@ -78,7 +84,10 @@ public class AdminFacade  {
     	return false;
  
       }
-    
+    	 @Override
+    		public String toString() {
+    			return "admin";
+    		}
     	 
     	 /*************************************************************/
     	 /***********************Company Methods   *********************************/
@@ -337,17 +346,18 @@ public class AdminFacade  {
       
 	 public Coupon getCoupon(long id) throws Exception {
 			// TODO Auto-generated method stub
-		return couponDAO.getCoupon(id);  
-			
-		}
-
-		 
-}
+		return couponDAO.getCoupon(id);  			
+	 }
 	 
-
 	 /**************************************************************************************************************/
-	             
-		
-
+	            
+/**
+ * method added to insert data in the join tables:
+ * @throws Exception 
+ */
+		public CustomerCoupons insertdata () throws Exception {
+		 CustomerCoupons customerCoupons = new CustomerCoupons();
+		 return customerCoupons.InsertCustomerCoupons(customerCoupons);
+		}}
 
 		

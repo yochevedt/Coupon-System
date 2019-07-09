@@ -1,64 +1,63 @@
-//package Database;
-//import Coupon.*;
-//import Customer.*;
-//import Company.*;
-//import java.sql.*;
-//
-//
-////this class is the Singletone --Connection Pool ///
-//
-//public class ConnectionPool {
-//	
-//	private final static int MAX_CONNECTIONS = 8;
-//	private static ConnectionPool instance = null;
-//	private static  Connection[] connections = new Connection[MAX_CONNECTIONS];
-////	private static String dbUrl = "jdbc:derby://localhost:3301/test;create=true";
-//	private static int counter;
-//	
-//	private ConnectionPool(){}
-//	
-//	public static ConnectionPool getInstance() {
-//		if (instance ==null) {
-//			synchronized (ConnectionPool.class) {
-//				if (instance == null) {
-//					instance = new ConnectionPool();
-//		//			initializerConnections();
-//					counter = 0;
-//				}
-//				
-//			}
-//		}
-//		return instance;
-//		
-//	}
-//
-////	private static void initializerConnections() {
-////		for (int i=0; i < MAX_CONNECTIONS; i++){
-////			try {
-////				connections [i] = DriverManager.getConnection(dbUrl);
-////			} catch (SQLException e) {
-////				e.printStackTrace();
-////			}
-////		}
-////		
-////	}
-//	
-//	public static Connection getConnection() {
-//		counter ++;
-//		if (counter == Integer.MAX_VALUE)
-//			counter = 0;
-//		return connections [counter%MAX_CONNECTIONS];
-//	}	
-//	
-//	
-//	public static Connection closeConnections(){
-//		Connection connection = null;
-//		if (connections != null) {
-//			try {
-//				connection.close();
-//			} catch (SQLException e){/*ignored */}
-//		}
-//		return null;
-//	}
-//
-//}
+package Database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class ConnectionPool {
+
+	private ArrayList<Connection> connectionDB = new ArrayList<Connection>();
+	private static final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
+	//private static final String URL = "jdbc:derby://localhost:1527/CouponSystem";
+	private static final String URL = "jdbc:derby://localhost:3301/test";    //create=true";
+
+	private static ConnectionPool pool = new ConnectionPool();
+
+
+	private ConnectionPool() {
+		try {
+			Class.forName(DRIVER);
+
+		} catch (ClassNotFoundException e) {
+			System.out.println("Driver not found - Couldn't connect to the pool");
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 5; i++) {
+			try {
+				connectionDB.add(DriverManager.getConnection(URL, "root", "root"));
+			} catch (SQLException e) {
+				System.out.println("Unavailable connection - Couldn't connect to the pool");
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public static ConnectionPool getInstance() {
+		return pool;
+	}
+
+	public Connection getConnection() {
+		try {
+			if (connectionDB.isEmpty()) {
+				connectionDB.wait();
+			} else
+				connectionDB.remove(connectionDB);
+		} catch (Exception e) {
+			System.out.println("connection unavailable");
+		}
+		return pool.connectionDB.get(0);
+	}
+
+	public void returnConnection(Connection connection) {
+		connectionDB.add(connection);
+	}
+
+	public void closeAllConnections() {
+		try {
+			((Connection) connectionDB).close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}

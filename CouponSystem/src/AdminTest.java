@@ -34,7 +34,7 @@ public class AdminTest {
 		String line = "---------------------------------------------------------------\n";
 		
 		//Login as Admin
-		facade.Login("admin", "1234");
+		facade.login("admin", "1234");
 		   
 		      if (facade instanceof AdminFacade) {
                     System.out.println("========  Login(admin, 1234, AdminFacade) ========\n");
@@ -79,26 +79,26 @@ public class AdminTest {
 	               /**Coupons Tests for Admin **/
 	
 	/***Show coupons method *****/
-     // coupons = ((AdminFacade) facade).getAllCoupons();
-  	//  System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
+       coupons = ((AdminFacade) facade).getAllCoupons();
+  	  System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
 	
 	/*******************************************************************************/
 	
 	/****Create new Coupons ***//////This Method is Working !!/////////////**//
 	
-//	Coupon K01= new Coupon(700, "Super1", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
-//	Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+     // Coupon K01= new Coupon(977, "Super1977", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+//	  Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
   //  Coupon K03= new Coupon(714, "Super12340", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
       java.sql.Date.valueOf(LocalDate.now());
-     java.sql.Date.valueOf(LocalDate.now().plusDays(10));
-	System.out.println("connection");
-//	
-//	((AdminFacade) facade).insertCoupon(K01);
+      java.sql.Date.valueOf(LocalDate.now().plusDays(10));
+	  System.out.println("connection");
+	
+	//((AdminFacade) facade).insertCoupon(K01);
 //	((AdminFacade) facade).insertCoupon(K02);
     //((AdminFacade) facade).insertCoupon(K03);
 	//System.out.println("New Coupons were added to the System " + K01 + K02 + K03 );
-	//System.out.println("New Coupons were added to the System " + K03 );
+	//System.out.println("New Coupons were added to the System " + K01 );
 //	
 	/**Display all coupons after Creating new Coupons**/
 	//coupons = ((AdminFacade) facade).getAllCoupons();
@@ -106,8 +106,8 @@ public class AdminTest {
 	
 	/**getAllCoupons method is not working - there is a problem when getting the data from the db **/
 	
-	//coupons =  ((AdminFacade) facade).getAllCoupons();
-	//System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
+	 // coupons =  ((AdminFacade) facade).getAllCoupons();
+	  //System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
 	
 	
 	//   }	
@@ -161,8 +161,8 @@ public class AdminTest {
 	
  /***********/
  /**Display specific Customer details **/  /**this method is working**/
-     ((AdminFacade) facade).getCustomer(7);
-     System.out.println("Details custermer  with id : " + facade.getCustomer(7));
+   //  ((AdminFacade) facade).getCustomer(7);
+    // System.out.println("Details custermer  with id : " + facade.getCustomer(7));
 
  /***********/
      /**Update specific customer ***/
@@ -184,8 +184,8 @@ public class AdminTest {
  /*****Remove Customer and display getAllCustomer after remove Customer *******/
 	 
 	// ((AdminFacade) facade).removeCustomer(id, CustomerName, Password);
-   ((AdminFacade) facade).removeCustomer(7, "liba", "passnot");
-   System.out.println("Method remove customer was triggered  " );
+//   ((AdminFacade) facade).removeCustomer(7, "liba", "passnot");
+ //  System.out.println("Method remove customer was triggered  " );
     
 	 
 }}

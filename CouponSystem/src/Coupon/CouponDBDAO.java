@@ -1,13 +1,18 @@
 package Coupon;
 import Coupon.Coupon;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TimeZone;
 import org.apache.derby.client.am.SqlException;
-
 import com.sun.org.apache.regexp.internal.recompile;
-
+import Database.ConnectionPool;
 import Database.Database;
 import sun.util.calendar.CalendarDate;
 import java.sql.*;
@@ -15,9 +20,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import Database.ConnectionPool;
 
 
 public class CouponDBDAO implements CouponDAO {
+	private static final String SqlException = null;
 	Connection con;
 	private char[] SQLException;
 	
@@ -147,46 +154,123 @@ public class CouponDBDAO implements CouponDAO {
 		return coupon;
 	}
 
-	@SuppressWarnings("unused")
+	
+	///////////////original method for Get All Coupons ////////////////////////
+//	@SuppressWarnings("unused")
+//	@Override
+//	public synchronized Set<Coupon> getAllCoupons() throws Exception {
+//		//con = DriverManager.getConnection(Database.getDBURL());
+//		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
+//		Set<Coupon> set = new HashSet<>();		
+//		String sql = "SELECT id FROM Coupons";
+//		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
+//			while (rs.next()) {
+//			long id = rs.getLong(1);
+//			String title = rs.getString(1);
+//	  	Date startDate = rs.getDate(1);
+//		 Date endDate = rs.getDate(1);
+//			int amount = rs.getInt(1);
+//			String type = rs.getString(1);
+//			String message = rs.getString(1);
+//			double price = rs.getDouble(1);
+//  		    String image = rs.getString(1);
+//				
+//		
+//             set.add(new Coupon());
+//            LocalDate startDate1 = null;
+//			LocalDate endDate1 = null;
+//			//    set.add(new Coupon(id, title, startDate, endDate, amount, type, message, price, image));
+//             set.add(new Coupon(id, title, startDate1, endDate1, amount, type, message, price, image));
+//             System.out.println("list coupons is " + couponDAO.getAllCoupons());
+//			}
+//		} catch (SQLException e) {
+//			//System.out.println(e);
+//			e.printStackTrace();
+//			throw new Exception("cannot get Coupon data");
+//		} finally {
+//			con.close();
+//		}
+//
+//		return set;
+//	}////////////////////////////////////////////////////////////////finish original method get all coupons
+	
+	
+	/**
+	 * new method get all coupons
+	 * @throws Exception 
+	 */
 	@Override
-	public synchronized Set<Coupon> getAllCoupons() throws Exception {
-		//con = DriverManager.getConnection(Database.getDBURL());
-		Connection con = DriverManager.getConnection("jdbc:derby://localhost:3301/test;crete=true");
-		Set<Coupon> set = new HashSet<>();		
-		String sql = "SELECT id FROM Coupons";
-		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)) {
-			while (rs.next()) {
-			long id = rs.getLong(1);
-			String title = rs.getString(1);
-	  	// Date startDate = rs.getDate(1);
-		// Date endDate = rs.getDate(1);
-			int amount = rs.getInt(1);
-			String type = rs.getString(1);
-			String message = rs.getString(1);
-			double price = rs.getDouble(1);
-  		    String image = rs.getString(1);
+	public Set<Coupon> getAllCoupons() throws Exception {
+		Collection<Coupon> coupons = new ArrayList<Coupon>();
+
+		try {
+			con = ConnectionPool.getInstance().getConnection();
+			String getAllSQL = "SELECT ID FROM COUPONS";
+			PreparedStatement pStatement = con.prepareStatement(getAllSQL);
+			ResultSet result = pStatement.executeQuery();
+
+			if (result != null) {
+				while (result.next()) {
+					Coupon coupon = getCoupon(result.getLong("ID"));
+					coupon.getCoupon(result.getLong("ID"));
+				}
+				System.out.println("All coupons retrieved from the database!" + coupons.addAll(coupons));
 				
-		
-             set.add(new Coupon());
-            LocalDate startDate1 = null;
-			LocalDate endDate1 = null;
-			//    set.add(new Coupon(id, title, startDate, endDate, amount, type, message, price, image));
-             set.add(new Coupon(id, title, startDate1, endDate1, amount, type, message, price, image));
-             System.out.println("list coupons is " + couponDAO.getAllCoupons());
 			}
 		} catch (SQLException e) {
-			//System.out.println(e);
-			e.printStackTrace();
-			throw new Exception("cannot get Coupon data");
+			System.out.println(SQLException + "Error connection..");
+			throw new SQLException("Failed to retrieve all coupons from the database.");
 		} finally {
-			con.close();
+			System.out.println("Connecting......");
+			             ConnectionPool.getInstance().returnConnection(con);
+			System.out.println(SqlException + "error sql");
+		
 		}
-
-		return set;
+		return (Set<Coupon>) coupons;
 	}
 
 	public void removeCoupon(long id) throws Exception {
 		// TODO Auto-generated method stub
 		couponDAO.removeCoupon(getCoupon(id));
 	}
-}
+
+	
+//	public void removeExpiredCoupon() {
+//		
+//		Collection<Coupon> taskList = null;
+//		//CouponDAO couponTask = new CouponDAO() {
+//		CouponDBDAO couponTask = new CouponDBDAO(); 
+//		
+//		try {
+//			taskList = (ArrayList<Coupon>) couponTask.getAllCoupons();
+//		} catch (SQLException e) {
+//			throw new SQLException("Failed to remove expired Coupons.");
+//		}
+//		Iterator<Coupon> iter = taskList.iterator();
+//		if (iter != null) {
+//			while (iter.hasNext()) {
+//				Coupon currentCoupon = iter.next();
+////				if (!currentCoupon.getEndDate().isAfter(getTime())) {
+////					try {
+////						couponTask.removeCoupon(currentCoupon);
+////					} catch (SQLException e) {
+////						throw new SQLException("Failed to remove expired Coupons.");
+////					}
+//               }
+//			}}
+
+	private Object getTime() {
+		java.util.Date today = new java.util.Date();
+		today = Calendar.getInstance().getTime();
+		return (Date) today;
+	}
+
+	@Override
+	public void removeExpiredCoupon() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	}
+
+

@@ -59,7 +59,7 @@ import Database.Database;
 	public synchronized  Set<CompanyCoupons> getAllCompanyCoupons() throws Exception {
 		Connection con = DriverManager.getConnection(Database.getDBURL());
 		Set<CompanyCoupons> set = new HashSet<>();
-		String sql = "SELECT comp_id FROM Company_Coupon";
+		String sql = "SELECT COMP_ID FROM COMPANY_COUPON";
 		try (Statement stm = con.createStatement(); ResultSet rs = stm.executeQuery(sql)){
 			while (rs.next()){
 				long compId = rs.getLong(1);
