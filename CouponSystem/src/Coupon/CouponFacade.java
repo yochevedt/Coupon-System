@@ -36,8 +36,8 @@ public class CouponFacade {
 			Integer newAmount, String newType, String newMessage, Double newPrice, String newImage)
 			throws Exception {
 		coupon.setTitle(newTitle);
-		coupon.setStartDate(newStartDate);
-		coupon.setEndDate(newEndDate);
+		//coupon.setStartDate(newStartDate);
+		//coupon.setEndDate(newEndDate);
 		coupon.setAmount(newAmount);
 		coupon.setType(newType);
 		coupon.setMessage(newMessage);

@@ -21,7 +21,7 @@ public class DropTable {
 			
 			// To delete a table from database we use the DROP TABLE
             // command and specify the table name to be dropped
-            String sql = "DROP TABLE COMPANIES";
+            String sql = "DROP TABLE COUPONS";
 
             // Create a statement
             Statement statement = connection.createStatement();

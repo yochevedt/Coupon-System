@@ -3,6 +3,7 @@ package Company;
 import java.util.logging.Logger;
 
 
+
 public class Company {
 	private long id;
 	private String companyName;

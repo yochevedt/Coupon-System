@@ -55,7 +55,7 @@ public class AdminTest {
    /****Show All companies method (working) *******************/
                     
      // Show all companies (After creating new companies - before update).
-	  companies = ((AdminFacade) facade).getAllCompanies();
+	//  companies = ((AdminFacade) facade).getAllCompanies();
 	//  System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
 	//  System.out.println("List of companies is : " + facade.getAllCompanies());	            
 	/********************************************************************/			
@@ -87,14 +87,14 @@ public class AdminTest {
 	               /**Coupons Tests for Admin **/
 	
 	/***Show coupons method *****/
-     // coupons = ((AdminFacade) facade).getAllCoupons();
-  	// System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
+    //  coupons = ((AdminFacade) facade).getAllCoupons();
+  //	System.out.println("Method getAllCoupons is displaying data : " + facade.getAllCoupons());
 	
 	/*******************************************************************************/
 	
 	/****Create new Coupons ***//////This Method is Working !!/////////////**//
 	
-     //Coupon K01= new Coupon(1000, "Super1000", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+    Coupon K01= new Coupon(1000, "Super1000", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //	  Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
   //  Coupon K03= new Coupon(714, "Super12340", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
@@ -109,8 +109,8 @@ public class AdminTest {
 	//System.out.println("New Coupons were added to the System " + K01 );
 //	
 	/**Display all coupons after Creating new Coupons**/
-	coupons = ((AdminFacade) facade).getAllCoupons();
-	System.out.println("All coupons : " + facade.getAllCoupons());
+	//coupons = ((AdminFacade) facade).getAllCoupons();
+	//System.out.println("All coupons : " + facade.getAllCoupons());
 	
 	
 	/**getAllCoupons method is not working - there is a problem when getting the data from the db **/
@@ -134,8 +134,14 @@ public class AdminTest {
 	//Need to be added this method//
 	
 	//((AdminFacade) facade).RemoveCoupon(K03);
+	  
 	
 }
+   /**
+    * get coupon method by Admin Facade		
+    */
+	//((AdminFacade) facade).getCoupon(1000);   
+	//System.out.println("coupon id : " + facade.getCoupon(1000));
 		      
 		      /**************************************************************************************************************/
               /*************Customers tests for Admin Facade **********************/
@@ -190,12 +196,13 @@ public class AdminTest {
  /*****Remove Customer and display getAllCustomer after remove Customer *******/
 		      //this method is running, but the customer is not removed from the db
 	 
-	//((AdminFacade) facade).removeCustomer(id, CustomerName, Password);
-    Customer customer = ((AdminFacade)facade).getCustomer(7);
-    ((AdminFacade)facade).removeCustomer(customer);
-   // ((AdminFacade) facade).removeCustomer(7, "", "");
-     System.out.println("Method remove customer was triggered  " );
-    
+//	//((AdminFacade) facade).removeCustomer(id, CustomerName, Password);
+//    Customer customer = ((AdminFacade)facade).getCustomer(7);
+//    ((AdminFacade)facade).removeCustomer(customer);
+//    System.out.println("delete" );
+//   // ((AdminFacade) facade).removeCustomer(7, "", "");
+//     System.out.println("Method remove customer was triggered  " );
+//    
 	 
 }}
 	

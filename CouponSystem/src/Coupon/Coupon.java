@@ -1,8 +1,9 @@
 package Coupon;
 
-import java.sql.Date;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 import com.sun.org.apache.xpath.internal.operations.Equals;
@@ -15,8 +16,8 @@ import java.time.*;
 public class Coupon {
    private long id;
    private String title;
-   private LocalDate startDate; 
-   private LocalDate endDate;
+   private Date startDate; 
+   private Date endDate;
    private int amount;
    private String type;
    private String message;
@@ -24,27 +25,27 @@ public class Coupon {
    private String image;
    
 
-  public Coupon (long id, String title, LocalDate startDate, LocalDate endDate, 
+  public Coupon (long id, String title, Date startDate, Date endDate, 
 	int amount, String type, String message, double price, String image){
 	  
     super();
 	  
-	long timestamp = System.currentTimeMillis();
-		Date date = new Date(timestamp);
-		DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
-		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-		
-		LocalDate myLocalDate = date.toLocalDate();
-		LocalDate exparationDate= myLocalDate.plusDays(10);
+	//long timestamp = System.currentTimeMillis();
+//		Date date = new Date(timestamp);
+//		DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+//		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+//		
+//		LocalDate myLocalDate = date.toLocalDate();
+//		LocalDate exparationDate= myLocalDate.plusDays(10);
 	
 	   // System.out.println(myLocalDate);
 		
 	  setId(id);  
 	  setTitle(title);
-	  setStartDate(myLocalDate);
+	  setStartDate(startDate);
 	  //setStartDate(startDate);  //changed now03.04
 	  //setEndDate(endDate);      //changed now03.04
-	  setEndDate(exparationDate);
+	  setEndDate(endDate);
 	  setAmount(amount);
 	  setType(type);
 	  setMessage(message);
@@ -75,16 +76,16 @@ public class Coupon {
 		this.title = title;
 	}
 
-	public LocalDate getStartDate() {
+	public Date getStartDate() {
 		
 		return startDate;
 	}
 
-   public void setStartDate(LocalDate myLocalDate) {
+   public void setStartDate(Date myLocalDate) {
 	this.startDate=myLocalDate;
     }
 	
-	public LocalDate getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
@@ -92,7 +93,7 @@ public class Coupon {
 //		this.endDate = updatedDate;
 //	}
 	
-	public void setEndDate(LocalDate exparationDate) {
+	public void setEndDate(Date exparationDate) {
 		this.endDate = exparationDate;
 	}
 
