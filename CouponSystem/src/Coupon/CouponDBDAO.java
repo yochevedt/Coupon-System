@@ -56,10 +56,16 @@ public class CouponDBDAO implements CouponDAO {
 			// pstmt.setObject(3, coupon.getStartDate());
 			//pstmt.setString(3, coupon.getStartDate(myLocalDate));
 			Date 
-			LocalDate localDate = sqlDate.toLocalDate();
-					java.sql.Date sqlDate = java.sql.Date.valueOf( todayLocalDate );
-			
+			LocalDate localDate = Date.toLocalDate();
+			java.sql.Date sqlDate = java.sql.Date.valueOf( todayLocalDate );
 			pstmt.setDate(3, coupon.getStartDate());
+			////////////
+			Date date3;
+			
+			
+			
+			
+			
 			// pstmt.setDate(4, coupon.getEndDate());
 			pstmt.setString(4, coupon.getEndDate(expiredDate));
 			pstmt.setInt(5, coupon.getAmount());

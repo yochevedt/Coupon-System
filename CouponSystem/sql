@@ -1,0 +1,8 @@
+alter table COMPANY_COUPON 
+  add constraint fk_company_coupon_coupons 
+    foreign key (COUPON_ID) references COUPONS (ID) on delete cascade;
+    
+    
+    
+    
+    
