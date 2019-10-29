@@ -16,7 +16,7 @@ public class TestCoupons {
 	//Coupon K5 = new Coupon(753, "coupon001", LocalDate.now(), LocalDate.now().plusDays(10), 950, "food555", "best coupon002", 800, "image");
 	//Coupon K17 = new Coupon(201, "Super114", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 	//Coupon K13 = new Coupon(914, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
-    Coupon K13= new Coupon(918, "Super3", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+    //Coupon K13= new Coupon(918, "Super3", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 
 	
     java.sql.Date.valueOf(LocalDate.now());

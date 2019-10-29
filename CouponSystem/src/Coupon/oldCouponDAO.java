@@ -2,7 +2,7 @@ package Coupon;
 
 import java.util.Set;
 
-public interface CouponDAO {
+public interface oldCouponDAO {
 	
 	
 	

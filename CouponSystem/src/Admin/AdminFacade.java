@@ -1,6 +1,6 @@
 package Admin;
 import java.sql.Connection;
-import JavaBeans.CustomerCoupons;
+//import JavaBeans.CustomerCoupons;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,7 +28,7 @@ import Coupon.Coupon;
 import Coupon.CouponDBDAO;
 import Customer.*;
 import Database.Database;
-import JavaBeans.CustomerCoupons;
+//import JavaBeans.CustomerCoupons;
 
 
 
@@ -37,7 +37,7 @@ import JavaBeans.CustomerCoupons;
 public class AdminFacade  {
 	
 	private static final String CouponId = null;
-	private static final CustomerCoupons CustId = null;
+	//private static final CustomerCoupons CustId = null;
 	/**Data members**/
     private  CompanyDBDAO companyDAO = new CompanyDBDAO();
     private CustomerDBDAO custDAO = new CustomerDBDAO();
@@ -299,16 +299,16 @@ public class AdminFacade  {
 	 
  	 
  		 
- 		public Set<Coupon> getAllCoupons() throws Exception {
- 			return couponDAO.getAllCoupons();
+ 		/*//public Set<Coupon> getAllCoupons() throws Exception {
+ 			//return couponDAO.getAllCoupons();*/
  			
- 		}	
+ 	//	}	
  		
  		/**********************************************************/
  		
  	/*************************************************************/	
  	
- 	public void insertCoupon(Coupon coupon) throws Exception {
+ 	/*public void insertCoupon(Coupon coupon) throws Exception {
 		//String getDBURL = null;
 		Connection con = DriverManager.getConnection(Database.getDBURL());
 		String sql = "INSERT INTO COUPONS (ID,TITLE,START_DATE,END_DATE,AMOUNT,TYPE,MESSAGE,PRICE,IMAGE)  VALUES(?,?,?,?,?,?,?,?,?)";
@@ -349,12 +349,12 @@ public class AdminFacade  {
 			con.close();
 		}
 				
-	}
+	}*****************************************/
  	
  	 /*************************************************************/
  	
      /**Remove Coupon method **/
- 	
+ 	/*
 	 public   void RemoveCoupon (Coupon coupon) {
 		 try {
 			couponDAO.removeCoupon(coupon.getId());
@@ -364,7 +364,7 @@ public class AdminFacade  {
 			System.out.println("Failed to remove coupon by Admin");
 			e.printStackTrace();
 		}
-	 }
+	 }*/
 	 
 	 /*************************************************************/
      /**
@@ -378,13 +378,13 @@ public class AdminFacade  {
 	 
 	 /**************************************************************************************************************/
 	            
-/**
- * method added to insert data in the join tables:
- * @throws Exception 
- */
-		public CustomerCoupons insertdata () throws Exception {
-		 CustomerCoupons customerCoupons = new CustomerCoupons();
-		 return customerCoupons.InsertCustomerCoupons(customerCoupons);
-		}}
-
+///**
+// * method added to insert data in the join tables:
+// * @throws Exception 
+// */
+//		public CustomerCoupons insertdata () throws Exception {
+//		 CustomerCoupons customerCoupons = new CustomerCoupons();
+//		 return customerCoupons.InsertCustomerCoupons(customerCoupons);
+//		}}
+}
 		

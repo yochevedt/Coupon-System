@@ -25,7 +25,7 @@ public  class CompanyDBDAO implements CompanyDAO {
 		
 		try (PreparedStatement pstmt = con.prepareStatement(sql)) {
 
-			pstmt.setLong (1, company.getId());
+			pstmt.setLong (1,company.getId());
 			pstmt.setString(2,company.getCompanyName());
 			pstmt.setString(3,company.getPassoword());
 			pstmt.setString(4,company.getEmail());

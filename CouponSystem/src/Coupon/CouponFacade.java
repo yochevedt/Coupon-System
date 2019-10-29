@@ -1,6 +1,7 @@
 package Coupon;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -10,7 +11,7 @@ import Coupon.CouponDBDAO;
 
 public class CouponFacade {
 	
-	private CouponDBDAO couponDAO = new CouponDBDAO();
+	private CouponDBDAO couponDBDAO = new CouponDBDAO();
 	private Coupon coupon;
 
 	public CouponFacade(Coupon K) {
@@ -34,6 +35,7 @@ public class CouponFacade {
 
 	public void updateCoupon(Coupon coupon, String newTitle, LocalDate newStartDate, LocalDate newEndDate, 
 			Integer newAmount, String newType, String newMessage, Double newPrice, String newImage)
+	
 			throws Exception {
 		coupon.setTitle(newTitle);
 		//coupon.setStartDate(newStartDate);
@@ -52,14 +54,14 @@ public class CouponFacade {
 		return coupon;
 	}
 
-	public Set<Coupon> getAllCoupons() throws Exception {
-		return couponDAO.getAllCoupons();
+	public Collection<Coupon> getAllCoupons() throws Exception {
 		
+		return couponDBDAO.getAllCoupons();
 	}
 
 	public void updateCoupon2(Coupon k13, String newTitle, LocalDate newStartDate, LocalDate newEndDate, int newAmount,
 			String newType, String newMessage, int i, String newImage) throws Exception {
-		couponDAO.updateCoupon(coupon);
+		couponDBDAO.updateCoupon(coupon);
 				
 	}
 

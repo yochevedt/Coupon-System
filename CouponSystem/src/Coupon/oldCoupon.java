@@ -1,23 +1,19 @@
 package Coupon;
 
-
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.TimeZone;
-
-import com.sun.org.apache.xpath.internal.operations.Equals;
-
 import java.time.*;
 
 
   
 
-public class Coupon {
+public class oldCoupon {
    private long id;
    private String title;
-   private Date startDate; 
-   private Date endDate;
+   private java.util.Date startDate; 
+   private LocalDate endDate;
    private int amount;
    private String type;
    private String message;
@@ -25,27 +21,27 @@ public class Coupon {
    private String image;
    
 
-  public Coupon (long id, String title, Date startDate, Date endDate, 
+  public Coupon (long id, String title, LocalDate startDate, LocalDate endDate, 
 	int amount, String type, String message, double price, String image){
 	  
     super();
 	  
-	//long timestamp = System.currentTimeMillis();
-//		Date date = new Date(timestamp);
-//		DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
-//		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-//		
-//		LocalDate myLocalDate = date.toLocalDate();
-//		LocalDate exparationDate= myLocalDate.plusDays(10);
+	long timestamp = System.currentTimeMillis();
+		Date date = new Date(timestamp);
+		DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+		
+		LocalDate myLocalDate = date.toLocalDate();
+		LocalDate exparationDate= myLocalDate.plusDays(10);
 	
 	   // System.out.println(myLocalDate);
 		
 	  setId(id);  
 	  setTitle(title);
-	  setStartDate(startDate);
+	  setStartDate(java.util.Date);
 	  //setStartDate(startDate);  //changed now03.04
 	  //setEndDate(endDate);      //changed now03.04
-	  setEndDate(endDate);
+	  setEndDate(exparationDate);
 	  setAmount(amount);
 	  setType(type);
 	  setMessage(message);
@@ -59,6 +55,11 @@ public class Coupon {
     }
 
 	
+
+	public Coupon(long id, String title, Date startDate, Date endDate, int amount, String type, String message,
+			double price, String image) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public long getId() {
 		return id;
@@ -76,16 +77,16 @@ public class Coupon {
 		this.title = title;
 	}
 
-	public Date getStartDate() {
+	public java.util.Date getStartDate() {
 		
 		return startDate;
 	}
 
-   public void setStartDate(Date myLocalDate) {
-	this.startDate=myLocalDate;
+   public void setStartDate(java.util.Date date) {
+	this.startDate=date;
     }
 	
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
@@ -93,7 +94,7 @@ public class Coupon {
 //		this.endDate = updatedDate;
 //	}
 	
-	public void setEndDate(Date exparationDate) {
+	public void setEndDate(LocalDate exparationDate) {
 		this.endDate = exparationDate;
 	}
 

@@ -24,6 +24,13 @@ public class Company {
 		setEmail(email);
 
 	}
+	
+//	public Company (String companyName, String password, String email){
+//		setId(id);
+//		setCompanyName(companyName);
+//		setPassword(password);
+//		setEmail(email);
+//	}
 
 	public long getId() {
 		return id;

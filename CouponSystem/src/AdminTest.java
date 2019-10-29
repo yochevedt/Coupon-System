@@ -46,16 +46,18 @@ public class AdminTest {
       /******************************************************************/              
       /** Create new 2 companies*/
                   //Template//
-                  // Company C3 = new Company(033, "RedBend4", "red00red00", "harman@gmail.com");
-              //  Company C2 = new Company(88, "HTest77", "harhar", "harman@gmail.com");
+               // Company C3 = new Company(1, "RedBend4", "red00red00", "harman@gmail.com");
+               Company C2 = new Company(1, "HTest77", "harhar", "harman@gmail.com");
+              //  Company C4 = new Company("test1", "password", "emailtest");
+               
                    
-           //    ((AdminFacade) facade).CreateCompany(C2);
-		       //  ((AdminFacade) facade).CreateCompany(C2);
+             ((AdminFacade) facade).CreateCompany(C2);
+		    // ((AdminFacade) facade).CreateCompany(C2);
 	
    /****Show All companies method (working) *******************/
                     
      // Show all companies (After creating new companies - before update).
-	//  companies = ((AdminFacade) facade).getAllCompanies();
+	 companies = ((AdminFacade) facade).getAllCompanies();
 	//  System.out.println("After creating new companies - Show all new companies\n" + line + companies.toString());
 	//  System.out.println("List of companies is : " + facade.getAllCompanies());	            
 	/********************************************************************/			
@@ -94,7 +96,7 @@ public class AdminTest {
 	
 	/****Create new Coupons ***//////This Method is Working !!/////////////**//
 	
-    Coupon K01= new Coupon(1000, "Super1000", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
+   // Coupon K01= new Coupon(1099, "Super1099", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //	  Coupon K02= new Coupon(701, "Super2", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
   //  Coupon K03= new Coupon(714, "Super12340", LocalDate.now(), LocalDate.now().plusDays(10), 650, "foods&need", "all", 800, "image");
 //
